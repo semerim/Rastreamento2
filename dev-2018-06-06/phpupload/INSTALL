@@ -1,0 +1,41 @@
+*** ENGLISH
+
+REQUIREMENTS:
+
+	PHP 4.1 or better
+	PHP_upload 1.0 or later
+	GD library
+
+INSTALLATION:
+
+* Copy the file upload.class.php where you want to use it
+* Include this file i your PHP file with: include("DIR_TO_UPLOAD/upload.class.php") 
+  where DIR_TO_UPLOAD is the directory where you have put upload.class.php
+* create a dir for your ulpoaded file ( es. images ) and CHMOD 777 this dir (unix).
+* (optional) create a dir for the thumbnails if you want to create it and CHMOD 777 this dir (unix).
+
+PS: to chmod a dir on remote server use SSH, telnet, or a FTP client like WS-FTP (windows). 
+    If you use WS-FTP click with left mouse botton on the dir and chose CHMOD, then check all checkbox and save. 
+
+
+
+
+*** ITALIANO
+
+PREREQUISITI:
+
+	PHP 4.1 o superiore
+	PHP_upload 1.0 or later
+	GD library
+
+INSTALLAZIONE:
+
+* copiare il file upload.class.php nella directory del vostro sito dove sara' utilizzato
+* Includere questo file nello script di upload con: include("DIR_TO_UPLOAD/upload.class.php") 
+  dove DIR_TO_UPLOAD e' la directory dove avete messo il file upload.class.php
+* create una dir per i file da uploadare ( es. images ) e cambiate in CHMOD 777 questa dir (unix).
+* (opzionale) create unaa dir per le miniature ( solo immagini ) e cambiate in CHMOD 777 questa dir (unix).
+
+PS: per fare il CHMOD delle directory usate SSH, telnet, o un client FTP come WS-FTP (windows). 
+    se usate WS-FTP fate click con il tasto desto del mouse sulla dir alla quale cambiare i permessi e scegliete CHMOD.
+    quindi mettete un check (selezionate) tutti i checkbox, salvate e uscite.

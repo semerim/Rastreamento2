@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://www.mozilla.org/editor/midas-spec.html -->
+<HTML><HEAD><TITLE>Midas Specification</TITLE>
+<META http-equiv=content-type content="text/html; charset=ISO-8859-1">
+<META content="Kathleen Brade" name=author><LINK 
+href="Midas Specification-Dateien/persistent-style.css" type=text/css 
+rel=stylesheet><LINK href="../images/mozilla-16.png" type=image/png rel=icon>
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bannercell vAlign=top><A class=bannerlink 
+      href="http://www.mozilla.org/"><IMG class=mozillaorgbanner height=58 
+      alt="" src="Midas Specification-Dateien/mozilla-banner.gif" width=600> 
+    </A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=3 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>
+      <TABLE class=outersidebar border=0>
+        <TBODY>
+        <TR>
+          <TD class=bordercell vAlign=top>
+            <TABLE class=middlesidebar cellSpacing=3 border=0>
+              <TBODY>
+              <TR>
+                <TD class=titlecell vAlign=top>
+                  <TABLE class=innersidebar cellSpacing=3 cellPadding=0 
+border=0>
+                    <TBODY>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/"><B>The 
+                        Mozilla<BR>Organization</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/mozorg.html">At A 
+                      Glance</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/feedback.html">Feedback</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/get-involved.html">Get 
+                        Involved</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/community.html">Newsgroups</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/MPL/">License 
+                    Terms</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/catalog/"><B>Developer 
+                        Docs</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/roadmap.html">Roadmap</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/projects/">Projects</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/ports/">Ports</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/owners.html">Module 
+                        Owners</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/hacking/">Hacking</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/source.html">Get the 
+                        Source</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/build/">Build It</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/quality/"><B>Testing</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/releases/">Download</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bugzilla.mozilla.org/enter_bug.cgi?format=guided">Report 
+                        A Bug</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/bugs/">Bugzilla</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/quality/bug-writing-guidelines.html">Bug 
+                        Writing</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/tools.html"><B>Tools</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://lxr.mozilla.org/seamonkey/">View 
+                      Source</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://tinderbox.mozilla.org/showbuilds.cgi?tree=SeaMonkey">Tree 
+                        Status</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bonsai.mozilla.org/cvsquery.cgi?treeid=default&amp;module=SeaMonkeyAll&amp;branch=HEAD&amp;branchtype=match&amp;dir=&amp;file=&amp;filetype=match&amp;who=&amp;whotype=match&amp;sortby=Date&amp;hours=2&amp;date=day&amp;mindate=&amp;maxdate=&amp;cvsroot=%2Fcvsroot">New 
+                        Checkins</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bugzilla.mozilla.org/">Submit A 
+                    Bug</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/faq.html"><B>FAQ</B></A></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/search.html"><B>Search</B></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top>Last revised: &nbsp;November 15, 2002<BR><BR>Midas is rich 
+      text editing controls for a document.<BR><BR>
+      <H1>Enabling Midas:</H1>
+      <DIV style="MARGIN-LEFT: 40px">Given a document, you can add the attribute 
+      "designMode" and set it to "on" to get an editable document. &nbsp;For 
+      example, in JavaScript, if you have an iframe with an id of 'edit', you 
+      can get its contentDocument and set designMode to "on" like this:<BR>
+      <DIV 
+      style="MARGIN-LEFT: 40px"><CODE>document.getElementById("edit").contentDocument.designMode="on";</CODE> 
+      </DIV><BR>Right now, you can't completely turn off editing by setting 
+      designMode to "off." &nbsp;Setting designMode to "off" will prevent 
+      certain operations from being handled but typing and other actions are 
+      still possible.<BR></DIV><BR>
+      <H1>Invoking Commands:</H1>
+      <H2>execCommand<BR></H2>
+      <DIV style="MARGIN-LEFT: 40px">Given a document that has Midas enabled, 
+      you can invoke specific commands on the document by calling execCommand 
+      with 3 parameters. &nbsp;For example, in JavaScript, if you have an 
+      editable document, you can invoke the bold command by calling this:<BR>
+      <DIV style="MARGIN-LEFT: 40px"><CODE>editableDocument.execCommand("Bold", 
+      false, null); </CODE></DIV>Notes: &nbsp;If you haven't set designMode to 
+      "On", you will get an error. &nbsp;This could also happen if you call 
+      execCommand with the wrong document.<BR><BR>There are 3 required 
+      parameters for execCommand:<BR>
+      <OL>
+        <LI>command string 
+        <LI>boolean flag for showing UI 
+        <LI>value string </LI></OL>The first parameter is a string which contains 
+      the command. &nbsp;The second parameter is a boolean flag. &nbsp;If it is 
+      set to true, you will get an error (NS_ERROR_NOT_IMPLEMENTED). &nbsp;The 
+      third parameter is a string which is the value. &nbsp;Some commands will 
+      require details such as the particular size you want to set when setting a 
+      font size.<BR><BR>The section on Supported Commands will document each 
+      command and any corresponding values needed.<BR></DIV>
+      <DIV style="MARGIN-LEFT: 40px"></DIV><BR>
+      <H2>queryCommandEnabled</H2>
+      <BLOCKQUOTE>This command operates on the editable document. &nbsp;There 
+        is one required parameter (the command string). &nbsp;The result is a 
+        boolean which is true if the command is can be done given the current 
+        selection and/or caret position. &nbsp;The result is false if the 
+        command should not be invoked (execCommand) given the current selection 
+        and/or caret position. <BR></BLOCKQUOTE><BR>
+      <H2>queryCommandState</H2>
+      <BLOCKQUOTE>xxx<BR></BLOCKQUOTE><BR>
+      <H2>queryCommandValue</H2>
+      <BLOCKQUOTE>xxx<BR></BLOCKQUOTE><BR>
+      <H1>Supported Commands:</H1>
+      <DIV style="MARGIN-LEFT: 40px">The following list of commands is presented 
+      in alphabetical order. &nbsp;The commands may be mixed case or whatever 
+      makes your code more readable.<BR><BR>
+      <TABLE style="WIDTH: 100%; TEXT-ALIGN: left" cellSpacing=2 cellPadding=2 
+      border=1>
+        <TBODY>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">command<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">value<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">explanation / behavior<BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">backcolor<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">????<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">This command is untested right 
+            now.<BR>This command will set the background color of the 
+          document.</TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">bold<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">If there is no selection, the 
+            insertion point will set bold for subsequently typed characters. 
+            &nbsp;<BR><BR>If there is a selection and all of the characters are 
+            already bold, the bold will be removed. &nbsp;Otherwise, all 
+            selected characters will become bold.<BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">copy<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">If there is a selection, this 
+            command will copy the selection to the clipboard. &nbsp;If there 
+            isn't a selection, nothing will happen.<BR><BR>note: &nbsp;the 
+            shortcut key will automatically trigger this command (typically 
+            accel-C)<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>createlink<BR></TD>
+          <TD vAlign=top>url (href)<BR></TD>
+          <TD vAlign=top>This command will not do anything if no selection is 
+            made. &nbsp;If there is a selection, a link will be inserted around 
+            the selection with the url parameter as the href of the 
+        link.<BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">cut<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">If there is a selection, this 
+            command will copy the selection to the clipboard and remove the 
+            selection from the edit control. &nbsp;If there isn't a selection, 
+            nothing will happen.<BR><BR>note: &nbsp;the shortcut key will 
+            automatically trigger this command (typically accel-X)<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>delete<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top>This command will delete all text and objects that 
+            are selected.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>fontname<BR></TD>
+          <TD vAlign=top>????<BR></TD>
+          <TD vAlign=top>This command will set the fontface for a selection or 
+            at the insertion point if there is no selection.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>fontsize<BR></TD>
+          <TD vAlign=top>????<BR></TD>
+          <TD vAlign=top>This command will set the fontsize for a selection or 
+            at the insertion point if there is no selection.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>forecolor<BR></TD>
+          <TD vAlign=top>????<BR></TD>
+          <TD vAlign=top>This command is untested right now.<BR>This command 
+            will set the text color of the selection or at the insertion 
+            point.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>formatblock<BR></TD>
+          <TD vAlign=top>????<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD vAlign=top>heading<BR></TD>
+          <TD vAlign=top>????<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">indent<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">Indent the block where the caret is 
+            located.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>inserthorizontalrule<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top>This command will insert a horizontal rule (line) at 
+            the insertion point.<BR><BR>Does it delete the selection?<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>insertimage<BR></TD>
+          <TD vAlign=top>url (src)<BR></TD>
+          <TD vAlign=top>This command will insert an image (referenced by url) 
+            at the insertion point.<BR><BR>Does it delete the 
+        selection?<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>insertorderedlist<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD vAlign=top>insertunorderedlist<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">italic<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">If there is no selection, the 
+            insertion point will set italic for subsequently typed characters. 
+            &nbsp;<BR><BR>If there is a selection and all of the characters are 
+            already italic, the italic will be removed. &nbsp;Otherwise, all 
+            selected characters will become italic.</TD></TR>
+        <TR>
+          <TD vAlign=top>justifycenter<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD vAlign=top>justifyfull<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD vAlign=top>justifyleft<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD vAlign=top>justifyright<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">outdent<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">Outdent the block where the caret is 
+            located. &nbsp;If the block is not indented prior to calling 
+            outdent, nothing will happen.<BR><BR>note: &nbsp;is an error thrown 
+            if no outdenting is done?<BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">paste<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">This command is disabled for the 
+            time being to prevent security exploits.<BR><BR>This command will 
+            paste the contents of the clipboard at the location of the caret. 
+            &nbsp;If there is a selection, it will be deleted prior to the 
+            insertion of the clipboard's contents.<BR><BR>note: &nbsp;the 
+            shortcut key will automatically trigger this command (typically 
+            accel-V)</TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">redo<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">This command will redo the previous 
+            undo action. &nbsp;If undo was not the most recent action, this 
+            command will have no effect.<BR><BR>note: &nbsp;the shortcut key 
+            will automatically trigger this command (typically 
+        accel-shift-Z)</TD></TR>
+        <TR>
+          <TD vAlign=top>removeformat<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">selectall<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">This command will select all of the 
+            contents within the editable area.<BR><BR>note: &nbsp;the shortcut 
+            key will automatically trigger this command (typically 
+          accel-A)<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>strikethrough<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top>If there is no selection, the insertion point will 
+            set strikethrough for subsequently typed characters. 
+            &nbsp;<BR><BR>If there is a selection and all of the characters are 
+            already striked, the strikethrough will be removed. Otherwise, all 
+            selected characters will have a line drawn through them.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>subscript<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top>If there is no selection, the insertion point will 
+            set subscript for subsequently typed characters. &nbsp;<BR><BR>If 
+            there is a selection and all of the characters are already 
+            subscripted, the subscript will be removed. Otherwise, all selected 
+            characters will be drawn slightly lower than normal text.<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>superscript<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top>If there is no selection, the insertion point will 
+            set superscript for subsequently typed characters. &nbsp;<BR><BR>If 
+            there is a selection and all of the characters are already 
+            superscripted, the superscript will be removed. Otherwise, all 
+            selected characters will be drawn slightly higher than normal 
+            text<BR></TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">underline<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">If there is no selection, the 
+            insertion point will set underline for subsequently typed 
+            characters. &nbsp;<BR><BR>If there is a selection and all of the 
+            characters are already underlined, the underline will be removed. 
+            Otherwise, all selected characters will become underlined.</TD></TR>
+        <TR>
+          <TD style="VERTICAL-ALIGN: top">undo<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">none<BR></TD>
+          <TD style="VERTICAL-ALIGN: top">This command will undo the previous 
+            action. &nbsp;If no action has occurred in the document, then this 
+            command will have no effect.<BR><BR>note: &nbsp;the shortcut key 
+            will automatically trigger this command (typically 
+accel-Z)<BR></TD></TR>
+        <TR>
+          <TD vAlign=top>unlink<BR></TD>
+          <TD vAlign=top>none<BR></TD>
+          <TD vAlign=top><BR></TD></TR></TBODY></TABLE><BR></DIV><BR></TD></TR>
+  <TR>
+    <TD vAlign=top align=right colSpan=2>
+      <DIV class=documentinfo>Copyright © 1998-2003 The Mozilla Organization. 
+      <BR>Last modified November 18, 2002. <BR><A 
+      href="http://www.mozilla.org/webtools/bonsai/cvslog.cgi?file=mozilla-org/html/editor/midas-spec.html&amp;rev=&amp;root=/cvsroot/">Document 
+      History</A>. <BR><A 
+      href="http://doctor.mozilla.org/?file=mozilla-org/html/editor/midas-spec.html">Edit 
+      this Page</A>. </DIV></TD></TR></TBODY></TABLE></BODY></HTML>

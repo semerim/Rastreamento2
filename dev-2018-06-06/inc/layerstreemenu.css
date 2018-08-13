@@ -1,0 +1,55 @@
+.treemenudiv	{
+	display: block;
+	white-space: nowrap;
+}
+
+.phplmnormal	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+	font-weight1: bold;
+	color: #000000;
+}
+
+a.phplmnormal:hover	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+   color: white;
+	font-weight1: bold;
+	color1: #000000;
+	background-color1: #fff0c0;
+   background-color: #7DD376;
+}
+
+a.phplm:link	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #003300;
+	text-decoration: none;
+}
+
+a.phplm:visited	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #003300;
+	color1: #726461;
+}
+
+a.phplm:hover	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color1: #841212;
+   color: white;
+	font1-weight: bold;
+	background-color1: #fff0c0;
+   background-color: #7DD376;
+}
+
+a.phplm:active	{
+	font-family: arial, luxi sans, verdana, geneva, arial, helvetica, sans-serif;
+	font-size: 11px;
+	color1: #841212;
+   color: white;
+	font1-weight: bold;
+	background-color1: #fff0c0;
+   background-color: #7DD376;
+}

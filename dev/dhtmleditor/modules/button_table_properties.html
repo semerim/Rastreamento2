@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+document.writeln('<title>'+window.dialogArguments['title']+'</title>');
+//-->
+</SCRIPT>
+
+<STYLE TYPE="text/css">
+ BODY   {margin-left:10; font-family:Verdana; font-size:12; background:menu}
+ BUTTON {width:5em}
+ TABLE,TD,INPUT  {font-family:Verdana; font-size:10px}
+ P      {text-align:center}
+</STYLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function _return()
+		{
+			var arg						=	window.dialogArguments;
+			var ret						=	new Array();
+			ret['attributes']			=	new Array();
+			for ( var i=0;i<arg['attributes'].length;i++ )
+				{
+					ret['attributes'][i]				=	new Array();
+					ret['attributes'][i]['name']		=	arg['attributes'][i];
+					ret['attributes'][i]['value']		=	document.getElementById(arg['attributes'][i]).value;
+					
+				}
+			for ( var i=0;i<arg['attributes_advanced'].length;i++ )
+				{
+					var l=ret['attributes'].length;
+					ret['attributes'][l]				=	new Array();
+					ret['attributes'][l]['name']		=	arg['attributes_advanced'][i];
+					ret['attributes'][l]['value']		=	document.getElementById(arg['attributes_advanced'][i]).value;
+				}
+		  window.returnValue = ret;
+		  window.close();
+		}
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE=JavaScript FOR=document EVENT=onkeydown>
+if (event.keyCode == 27) 	self.close();
+if (event.keyCode == 114)	
+	{
+		dialogWidth	=	parseInt(dialogWidth)+20+'px';
+		dialogHeight	=	parseInt(dialogHeight)+20+'px';
+	}
+if (event.keyCode == 115 && parseInt(dialogWidth)>20 && parseInt(dialogHeight)>20)	
+	{
+		dialogWidth	=	parseInt(dialogWidth)-20+'px';
+		dialogHeight	=	parseInt(dialogHeight)-20+'px';
+	}
+
+</SCRIPT>	
+
+</HEAD>
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+var attributes			=	window.dialogArguments['attributes'];
+var attributes_advanced	=	window.dialogArguments['attributes_advanced'];
+var pElement			=	window.dialogArguments['pElement'];
+var thisAttribute;
+
+
+document.writeln('<TABLE CELLSPACING=3>');
+	for ( var i=0;i<attributes.length;i++ )
+		{
+			var thisAttribute	=	attributes[i];
+			document.writeln('<TR>');
+				document.writeln('<TD>');
+					document.writeln(thisAttribute);
+				document.writeln('</TD>');
+
+				document.writeln('<TD>');
+					document.writeln('<INPUT value="'+pElement.getAttribute(thisAttribute)+'" ID="'+thisAttribute+'"></TD>');
+				document.writeln('</TD>');
+			document.writeln('</TR>');
+		}
+	for ( var i=0;i<attributes_advanced.length;i++ )
+		{
+			var thisAttribute	=	attributes_advanced[i];
+			document.writeln('<TR>');
+				document.writeln('<TD>');
+					document.writeln(thisAttribute);
+				document.writeln('</TD>');
+
+				document.writeln('<TD>');
+					document.writeln('<INPUT value="'+pElement.getAttribute(thisAttribute)+'" ID="'+thisAttribute+'"></TD>');
+				document.writeln('</TD>');
+			document.writeln('</TR>');
+		}
+document.writeln('</TABLE>');
+
+
+//-->
+</SCRIPT>
+
+<P>
+<BUTTON TYPE=SUBMIT onclick="_return()">OK</BUTTON>
+<BUTTON ONCLICK="window.close();">Cancel</BUTTON>
+
+</BODY>
+</HTML>

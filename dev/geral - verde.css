@@ -1,0 +1,453 @@
+dummy  {bla1: 11;
+       }
+
+	   
+.texto1
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           font-style: normal;
+           font-size: 11px;}
+
+th1      {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-weight: bold;
+         font-style: normal;
+         font-size: 8pt}
+
+td1      {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         font-size: 8pt}
+
+td.cabec_tabela1
+        {color: black;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-weight: bold;
+         font-style: normal;
+         font-weight: bold;
+         background-color: #C7ECC4;
+         font-size: 18px;}
+
+td.cabec_tabela2
+        {color: black;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-weight: bold;
+         font-style: normal;
+         font-weight: bold;
+         background-color: #C7ECC4;
+         font-size: 26px;}
+
+td.tabela1
+        {color: black;
+         background-color: #E2F5E0;
+         font-size: 12px;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         width: 100px;
+		 }
+td.tabela2
+        {color: black;
+         background-color: white;
+         font-size: 12px;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         width: 500px;
+         }
+
+td.tabelaFx1
+        {color: black;
+         background-color: #E2F5E0;
+         font-size: 11px;
+		font-family: Monaco, "Lucida Console", Courier, monospace;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         }
+
+td.tabelaFx2
+        {color: black;
+         background-color: white;
+         font-size: 11px;
+		 font-family: Monaco, "Lucida Console", Courier, monospace;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         }
+
+textarea.sql {
+    width: 100%;
+    height: 405px;
+    padding: 8px 8px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-family: Courier New;
+	font-style: normal;
+    font-size: 14px;
+    resize: none;
+}
+textarea.sqlForm {
+    width: 100%;
+    height: 200px;
+    padding: 8px 8px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-family: Courier New;
+	font-style: normal;
+    font-size: 12px;
+    resize: none;
+}
+
+textarea.sql2 {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+	font-family: Courier New;
+	font-style: normal;
+    font-size: 16px;
+    resize: none;
+}
+		 
+TEXTAREA
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         font-size: 8pt;
+		 background : white}
+SELECT
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         font-size: 8pt;
+         background : white}
+
+INPUT   {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.botao
+        {font-family: Verdana, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+a
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt;
+         color: #003399}
+
+.bot {
+		font-family: Arial, Trebuchet MS, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font1-weight: bold;
+		color1: #003366;
+      color: black;
+		background-color: #C4C4C4;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: #CCCCCC;
+		border-right-color: #666666;
+		border-bottom-color: #666666;
+		border-left-color: #CCCCCC;
+		cursor: hand;
+	}
+	
+	
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #000000;
+    color: #E2F5E0;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 10%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+         
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #cccccc transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}	
+
+
+	   
+SELECT.select
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.edit
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.botao
+        {font-family: Verdana, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+td.cabec_tabela1
+			  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           	color: black;
+				font-weight: bold;
+				background-color: white;
+            font-size: 14px;
+			  	border-style: solid;
+			  	border: solid #cccccc 0.06em;
+            }
+
+td.cabec_tabela2
+			  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           	color: black;
+				font-weight: bold;
+				background-color: white;
+            font-size: 18px;
+			  	border-style: solid;
+			  	border: solid #cccccc 0.06em;
+            }
+
+th.sel_header_top
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           background-color: #E5FFCC;
+           text-decoration: none;
+			  border-style: solid;
+			  border: solid #cccccc 0.06em;
+           font-style: normal;
+           font-size: 16px;}
+
+th.sel_header
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           background-color: #C7ECC4;
+           text-decoration: none;
+			  border-style: solid;
+			  border: solid #cccccc 0.06em;
+           font-style: normal;
+           font-size: 13px;}
+
+td.sel_detail
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           background-color: white;
+			  border-style: solid;
+			  border: solid #cccccc 0.06em;
+           font-style: normal;
+           font-size: 11px;}
+
+td.bottom
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           background-color: none;
+			border-style: solid;
+			  border: solid #cccccc 0.02em;
+           font-style: normal;
+           font-size: 10px;}
+
+a:link  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+         color1: #003399
+		 }
+
+a:visited
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+	      color1: #003399
+		  }
+
+
+a:hover {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: underline;
+         font-style: normal;
+         font-size: 11px
+		 }
+
+
+		 
+a.link1:link  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 14px;
+         font-weight: bold;
+		 color1: #003399
+		 }
+
+a.link1:visited
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 14px;
+         font-weight: bold;
+		 color1: #003399
+		 }
+
+
+a.link1:hover {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: underline;
+         font-style: normal;
+         font-size: 14px
+         font-weight: bold;
+		 }
+
+
+		 
+		 
+body.bottom	{
+			background: #C7ECC4;
+         }
+
+body.middle	{
+			background: #EDF9EC;
+         }
+
+body.btnMid	{
+			background: #EDF9EC;
+         }
+
+body.top2	{
+			background: #EDF9EC;
+         }
+
+body.top1	{
+			background: #EDF9EC;
+         }
+
+	
+
+	
+	
+	
+	
+	BODY1 {
+	SCROLLBAR-FACE-COLOR: #0060A0; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #0060A0; SCROLLBAR-3DLIGHT-COLOR: #6193e4; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #0060A0; SCROLLBAR-DARKSHADOW-COLOR: #000000 }
+
+   /* TreeMenu.css
+  A component of HTML_TreeMenu as extended by Chip Chapin
+  2002-10-31 Chip Chapin
+*/
+.tmenu0text {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+}
+.tmenu1text {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+}
+.tmenu2text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-style: italic;
+}
+.tmenu3text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+}
+
+/* Since all menu items are links, the following is equally important
+ * to your menu appearance.
+ * The main thing you may want to change are the A:link and A:visited colors.
+ */
+*.tmenu0text A:link,*.tmenu1text A:link,*.tmenu2text A:link,*.tmenu3text A:link
+  { text-decoration:none; font-color:black; color1:#505080 }
+*.tmenu0text A:visited,*.tmenu1text A:visited,*.tmenu2text A:visited,*.tmenu3text A:visited
+  { text-decoration:none; font-color:black; color1:#505080 }
+*.tmenu0text A:active,*.tmenu1text A:active,*.tmenu2text A:active,*.tmenu3text A:active
+  { text-decoration:none; font-color:black; color1:#805050 }
+*.tmenu0text A:hover,*.tmenu1text A:hover,*.tmenu2text A:hover,*.tmenu3text A:hover
+  { text-decoration:underline; font-color:black; color1:#FF0000 }
+
+/* .tmlistbox controls the appearance of Listbox menus */
+.tmlistbox {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;  /* match 'smalltext' value */
+  font-size-adjust: 0.58; /* Verdana */
+  margin-bottom: 0px;
+}
+
+/* .tmenuSelected is used with linkSelectKey to highlight selected items */
+.tmenuSelected {
+  background-color: yellow;
+}
+*.tmenuSelected A:link    { text-decoration:none; font-color:black; color1:#2020ff }
+*.tmenuSelected A:visited { text-decoration:none; font-color:black; color1:#2020ff }
+*.tmenuSelected A:active  { text-decoration:none; font-color:black; color1:#ff2020 }
+*.tmenuSelected A:hover   { text-decoration:underline; font-color:black; color1:#FF0000 }
+
+
+
+
+
+
+
+
+
+	

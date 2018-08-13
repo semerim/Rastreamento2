@@ -1,0 +1,673 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 10 (filtered)">
+<title>XS DHTML Editor</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:Arial;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:center;
+	font-size:16.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+span.Heading3Char
+	{font-family:Arial;
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section1
+	{page:Section1;}
+@page Section2
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section2
+	{page:Section2;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<p class=MsoTitle><span style='font-size:18.0pt'>XS DHTML Editor (</span><span
+ style='font-size:18.0pt'>XsDhtmlEditor</span><span style='font-size:18.0pt'>)</span></p>
+
+<p class=MsoTitle><span style='font-size:18.0pt'>Version 0.95</span></p>
+
+<p class=MsoTitle>User Manual</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=537
+height=512 src="XsDhtmlEditor-0.95-Manual_files/image001.gif"></p>
+
+</div>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman"'><br clear=all
+style='page-break-before:always'>
+</span>
+
+<div class=Section2>
+
+<h1>Introduction</h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The XS DHTML Editor has been designed to facilitate adding
+an HTML-aware text-editor to a standard web-page with as little effort from the
+web-page designer as possible.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h3>End-User Features:</h3>
+
+<p class=MsoNormal>Copy-and-Paste from Word/Excel with formatting preservation;</p>
+
+<p class=MsoNormal>Block Formatting (H1, H2, H3, etc…);</p>
+
+<p class=MsoNormal>Font-Face, Font-Size, and Font-Color selection;</p>
+
+<p class=MsoNormal>Bold;</p>
+
+<p class=MsoNormal>Italics;</p>
+
+<p class=MsoNormal>Underline;</p>
+
+<p class=MsoNormal>Ordered and Unordered lists;</p>
+
+<p class=MsoNormal>Indent and Outdent;</p>
+
+<p class=MsoNormal>Left, Center, and Right alignment, plus Full Justification;</p>
+
+<p class=MsoNormal>Hyperlinks, with support for http, https, ftp, news, gopher,
+mailto, file, telnet, and wais;</p>
+
+<p class=MsoNormal>Image support, including alignment, alternate-text, and
+borders;</p>
+
+<p class=MsoNormal>Table support;</p>
+
+<p class=MsoNormal>Emoticons support;</p>
+
+<p class=MsoNormal>Cut, Copy, and Paste;</p>
+
+<p class=MsoNormal>Undo and Redo;</p>
+
+<p class=MsoNormal>Preview and Print commands;</p>
+
+<p class=MsoNormal>Standard and HTML source views;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>All of these features are presented in a recognizable,
+Microsoft Office-like toolbar, which ensures the least amount of training
+required for your end-users.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h3>Developer Features:</h3>
+
+<p class=MsoNormal>Embed the editor in a web-page with as few as 2 lines of
+code;</p>
+
+<p class=MsoNormal>“path” property allows the editor to be used from any path
+within the site;</p>
+
+<p class=MsoNormal>“imagesPath” property ensures image links are transformed
+automatically;</p>
+
+<p class=MsoNormal>“content” property provides easy access to the current
+source of the editor;</p>
+
+<p class=MsoNormal>“value” property as an alias for “content” for easier
+replacement of a standard &lt;textarea&gt; tag; *</p>
+
+<p class=MsoNormal>“editorColumns” and “editorRows” properties for easier
+replacement of a standard &lt;textarea&gt; tag; *</p>
+
+<p class=MsoNormal>“showSave” property allows the Save icon to be hidden if
+needed;</p>
+
+<p class=MsoNormal>“onSave” event allows you to easily respond to the user
+clicking the “Save” icon;</p>
+
+<p class=MsoNormal> “replaceTags” property allows for HTML tags to be replaced
+with different HTML tags;</p>
+
+<p class=MsoNormal>“action” property for auto-posting to server on save; *</p>
+
+<p class=MsoNormal>definable block format, font, and font size lists; *</p>
+
+<p class=MsoNormal>definable default font and default font size; *</p>
+
+<p class=MsoNormal>“styleSheet” property for a more accurate “WYSIWYG”
+environment; *</p>
+
+<p class=MsoNormal>elect to show or hide 14 different options; *</p>
+
+<p class=MsoNormal>“insert” functions for performing custom actions which
+insert text or html into the content; *</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>* = new in version 0.95</p>
+
+<b><span style='font-size:16.0pt;font-family:Arial'><br clear=all
+style='page-break-before:always'>
+</span></b>
+
+<h1>Getting Started</h1>
+
+<h3>Installation</h3>
+
+<p class=MsoNormal>Installation of XS DHTML Editor is as simple as can be.
+Simply unzip the package to any folder within your site, using the “preserve
+folders” option of your unzip utility. When finished, you should have the
+following folder hierarchy (assuming you unzip to the root of your website):</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&lt;root folder of site&gt; ---</p>
+
+<p class=MsoNormal>                                    XSDHEditor ---</p>
+
+<p class=MsoNormal>                                                XsDhtmlEditor.htc</p>
+
+<p class=MsoNormal>                                                XsDhtmlEditorToolbarButton.htc</p>
+
+<p class=MsoNormal>                                                emoticons.htc</p>
+
+<p class=MsoNormal>                                                colorPicker.html</p>
+
+<p class=MsoNormal>                                                dlg_ins_table.html</p>
+
+<p class=MsoNormal>                                                index.html</p>
+
+<p class=MsoNormal>                                                license.html</p>
+
+<p class=MsoNormal>                                                license.text</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>                                                Docs ---</p>
+
+<p class=MsoNormal>                                                            XsDhtmlEditor-0.95-Manual.doc
+(this file)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>                                                Images ---</p>
+
+<p class=MsoNormal>                                                            (toolbar
+images, all prefixed with “icon_”)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>                                                            Emoticons
+---</p>
+
+<p class=MsoNormal>                                                                        (default
+emoticon images)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>                                                Samples ---</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Now that the component is installed, open the “index.html” file
+in the “XSDHEditor” folder. This is the most basic use of the editor, and
+should successfully display the editor without any modifications. If
+“index.html” does not work, make sure you unzipped the package correctly and
+the folders listed above were all created in the appropriate locations.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h3>Using The Editor</h3>
+
+<p class=MsoNormal>You can embed the editor into your pages very easily. First,
+change your &lt;HTML&gt; tag to include the XML Namespace decleration, like
+this:</p>
+
+<p class=MsoNormal><span style='color:navy'>            &lt;HTML XMLNS:XS&gt;</span></p>
+
+<p class=MsoNormal>Next, add the HTC import line between your opening and
+closing &lt;HEAD&gt; tags, like this:</p>
+
+<p class=MsoNormal><span style='color:navy'>            &lt;HEAD&gt;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='color:navy'>&lt;?import namespace=”XS” implementation=&quot;</span><span
+ style='color:navy'>XsDhtmlEditor</span><span style='color:navy'>.htc&quot;
+/&gt;</span></p>
+
+<p class=MsoNormal><span style='color:navy'>            &lt;/HEAD&gt;</span></p>
+
+<p class=MsoNormal>Finally, add the line to actually embed the editor in the
+appropriate location of your page, like this:</p>
+
+<p class=MsoNormal><span style='color:navy'>            &lt;XS:</span><span
+ style='color:navy'>XsDhtmlEditor</span><span style='color:navy'> id=&quot;xsEditor&quot;
+/&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>That’s all there is to it!<br clear=all style='page-break-before:
+always'>
+<span class=Heading3Char><span style='font-size:13.0pt'>Advanced Options</span></span></p>
+
+<p class=MsoNormal><b>“path” property –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “path” property is used
+whenever the web-page which embeds the editor is not stored in the XSDHEditor
+folder itself (or wherever you store the source files). For example, let’s say
+you have the package unzipped as shown in the hierarchy above, with the XSDHEditor
+folder being a sub-folder of your web-site’s root folder. If you wanted to
+embed the editor in a page that is saved in the root folder itself, you would
+need to change the htc import decleration in your page’s &lt;head&gt; section
+like this:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>(standard import)</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;?import namespace=”XS” implementation=&quot;</span><span
+ style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'>.htc&quot; /&gt;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>(import with relative path)</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;?import namespace=”XS” implementation=&quot;XSDHEditor/</span><span
+ style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'>.htc&quot; /&gt;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'> and add the “path” property to the
+standard embedding tag like this:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>(standard embedding tag)</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=&quot;xsEditor” /&gt;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>(embedding tag with “path”
+specified)</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=&quot;xsEditor” path=”XSDHEditor/”
+/&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“action” property –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “action” property can be set to
+any page you wish to post to when the “save” button is clicked. For example, if
+you set the “action” property to “save_content.asp”, when the “save” button is
+clicked the editor’s contents will be posted to the “save_content.asp” page and
+made available via a standard form variable called “xsContent”. In your “save_content.asp”
+page, you could then access the content using “Request.Form(“xsContent”)”.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Note: the “onSave” event will <b>not</b>
+fire if the “action” property is set.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“content”/”value” property –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “content” property gives you
+access to the current HTML source-code of the editor’s contents. The following
+example adds a standard HTML button to the page which, when clicked, pops-up an
+alert box with the contents of the editor:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&lt;input type=”button” onClick=”javascript:alert(xsEditor.content);”&gt;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>This assumes you gave the editor an
+ID of “xsEditor” when it was embedded.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>You can also set this property to
+initialize the editor with content when it is first loaded, like this:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=&quot;xsEditor”
+content=”&lt;STRONG&gt;Testing&lt;/STRONG&gt;” /&gt;</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='color:navy'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'>or by setting the property to a
+scripting variable, such as this in ASP:</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='color:navy'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:XsDhtmlEditor id=&quot;xsEditor” content=”&lt;%= varContent
+%&gt;” /&gt;</span></p>
+
+<p class=MsoNormal><span style='color:navy'>&nbsp;</span></p>
+
+<p class=MsoNormal><b>“insertText”/”insertHtml” functions –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>These functions allow you to use
+custom scripts to insert content into the editor. Use “insertText” by default.
+Only use “insertHtml” if you need to insert custom HTML tags.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Example: If you wanted to provide a
+button which, when clicked, would insert the current date and time, you could
+use this (assuming the editor’s id is “xsEditor”):</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;input type=”button” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>value=”Insert Date/Time” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>onClick=”xsEditor.insertText(new Date().to</span><span
+ style='font-size:11.0pt;color:navy'>LocaleString</span><span style='font-size:
+11.0pt;color:navy'>())”&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Example: If you wanted to provide a
+button which, when clicked, would insert a custom HTML tag, such as
+&lt;CODE&gt;this is code&lt;/CODE&gt;, you could use this (assuming the
+editor’s id is “xsEditor”):</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;input type=”button” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>value=”Insert &lt;CODE&gt; Tag” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>onClick=”xsEditor.insertHtml(‘&lt;CODE&gt;this
+is code&lt;/CODE&gt;’)”&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>            </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<span style='font-size:12.0pt;font-family:"Times New Roman";color:navy'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b>“imagesPath” property –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “imagesPath” property is used
+to replace the paths of images inserted into the editor before the content is
+saved. When an image is inserted into the editor, the end-user can click the
+“browse” button to locate an image on their hard-drive. The path to this image
+as inserted into the HTML code would be a local path (such as <a
+href="../../My%20Pictures/Photos/">file://c:/My Pictures/Photos/???</a>). Such
+a path would be useless when viewed as a webpage from the server which presents
+the finished content. By using the “imagesPath” property, you can have this
+path automatically translated to a path that makes sense on the web-server
+(such as “/Photos/???”). Let’s look at an example.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Suppose you have all of your site’s
+images in a folder called “Photos”, and since this folder is a sub-folder of
+the root of the site, a valid path to the folder in an HTML &lt;img&gt; tag
+would be “/Photos/???”. Now, you have the same images stored on your local
+system in the following folder: “C:\My Pictures\Photos\”. You can therefore set
+the “imagesPath” property to “/Photos”, and any image you insert into the
+editor from your local system’s “C:\My Pictures\Photos\???” folder will be
+converted to “/Photos/???” when the content property is accessed (normally just
+before you save the contents of the editor).</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Basically, you need to mimic the
+hierarchy on your local system to match that of the web-server, but it’s only
+necessary from the image folders base and beyond. As you can see from the
+example, the “Photos” folder on the web-server is just off the root, but the
+“Photos” folder on the local machine was within another sub-folder called “My
+Pictures”. This is fine. As long as the images base folder (“Photos” in this
+case) matches, and all files/sub-folders you use beyond that match, you’ll be
+fine.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“show?” properties –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “show?” properties allow you to
+turn off specific toolbar options. The following options can be turned off:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Block Format select
+list (showBlockFormat);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Font select list (showFont);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Font Size select list
+(showFontSize);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Full Justification
+button (showJustify);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Color Picker button (showColorPicker);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Insert Image button (showInsertImage);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Insert Link button (showInsertLink);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Insert Table button (showInsertTable);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Insert Emoticon
+button (showEmoticon);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - HTML/Source Mode
+button (showMode);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Preview button (showPreview);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Print button (showPrint);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Save button (showSave);</p>
+
+<p class=MsoNormal style='margin-left:.5in'>            - Cancel button (showCancel);</p>
+
+<p class=MsoNormal><b>&nbsp;</b></p>
+
+<p class=MsoNormal><b> “onSave” event –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “onSave” event is fired
+whenever the user clicks the “save” icon on the editor’s toolbar. The obvious
+use for this event is to kick-off your code to save the current contents of the
+ editor. Here is an example which simply displays the current source of the
+editor in an alert box:</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=&quot;xsEditor” onSave=”javascript:alert(xsEditor.content);”
+/&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“onCancel”, “onPreview” events –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “onCancel” and “onPreview”
+events are fired when the user clicks the “cancel” or “preview” icon,
+respectively. The editor takes no default action for either of these events,
+and it is up to the developer to give these events meaning.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“Print” button –</b></p>
+
+<p class=MsoNormal>            The “Print” button will raise the browser’s
+default “print” dialogue”.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“replaceTags” property –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>The “replaceTags” property allows
+you to replace HTML tags inserted by the editor with different HTML tags of
+your choosing. For example, the editor uses the &lt;STRONG&gt; &lt;/STRONG&gt;
+tags when the “bold” icon is clicked on the toolbar. If you prefer to use the
+&lt;B&gt;&lt;/B&gt; tags instead, you can use the “replaceTags” property to do
+so, like this:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=&quot;xsEditor” replaceTags=”&lt;STRONG&gt;,&lt;B&gt;”
+/&gt;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>You can include as many tag pairs
+as you wish, as long as you follow the format of original_tag,new_tag,original_tag,new_tag,etc,
+etc, etc… Notice that the list of tags is comma-seperated and there is no space
+after the commas.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'>The replacement operation is only
+performed when the “content” property is accessed. Even if “replaceTags” is
+used, switching to the source view mode will still show the original tags
+inserted by the editor, not the replacement tags.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>“block</b><b>FormatList</b><b>”/”fontList”/”font</b><b>SizeList</b><b>”
+properties –</b></p>
+
+<p class=MsoNormal style='margin-left:.5in'>These properties accept
+comma-delimited strings specifying the options to be displayed in the
+respective toolbar select lists. For example:</p>
+
+<p class=MsoNormal style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:11.0pt;
+color:navy'>&lt;XS:</span><span style='font-size:11.0pt;color:navy'>XsDhtmlEditor</span><span
+style='font-size:11.0pt;color:navy'> id=”xsEditor” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>block</span><span style='font-size:11.0pt;
+ color:navy'>FormatList</span><span style='font-size:11.0pt;color:navy'>=”H1,H2,H3”
+</span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>fontList=”Arial,Helvetica” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:11.0pt;color:navy'>font</span><span style='font-size:11.0pt;
+ color:navy'>SizeList</span><span style='font-size:11.0pt;color:navy'>=”small,medium,large”
+/&gt;</span></p>
+
+<p class=MsoNormal><span style='font-size:11.0pt;color:navy'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>Using these settings, the editor
+will display only “H1”, “H2”, and “H3” in the block format select list, only
+“Arial” and “Helvetica” in the font select list, and only “small”, “medium”,
+and “large” in the font-size select list.</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+*** ENGLISH
+
+* put uploaded image name and thumb name in MySQL database
+* ImageMagick integration for FX on the fly (drop shadow, sharpen, blur...)
+* create a standard thumbnail for gif and other non-image file
+
+
+*** ITALIANO
+
+* metodo per la gestione dei nomi file caricati attraverso un db MySQL
+* Integrazione con imageMagick per creare effetti sulle immagini (ombre, sharpen, blur...)
+* creare una miniatura standard per i file gif e per gli altri tipo di file 
+  per i quali non e' possibile creare una miniatura

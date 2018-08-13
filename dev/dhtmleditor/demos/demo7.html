@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+		//Load Plugin Librarie(s)
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_styleclass.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_template.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_hr.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_html.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_remove_xmltags.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_menu_invisible.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_css.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/grid_small.js"></SCRIPT>');
+		
+										
+	 // -->
+</SCRIPT>
+</head>
+<body>
+Loading more "Plugin" to the Editor<br>
+See this source for details<br>
+<br>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	var myEditor	=	new dhtmlEditor;
+	myEditor.setHeight(170);	//in pixel
+
+
+
+	//Register some Plugins	
+	////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//Registering the "listbox Styleclass" Plugin to the Editor Object (included in listbox_styleclass.js)
+	//This plugin enables the user to format text in the editor with custom stylesheet classes 
+	//We must tell the Plugin which Classes should be available to the DropDownList...
+	var config	 					=	new Array();//a config Table for the Plugin
+	config.preStyles				=	new Array();//a option Table for the DropDownList
+
+	config.preStyles[0]				=	new Array();			//option 1
+	config.preStyles[0]['name']		=	"Default Format";		//the Text of the option - here you can/must add free text which will describe the Stylesheet class in the DropDownList
+	config.preStyles[0]['value']	=	"default";				//the name of the StyleSheet class 
+
+	config.preStyles[1]				=	new Array();			//option 2
+	config.preStyles[1]['name']		=	"Small & green";		
+	config.preStyles[1]['value']	=	"smallgreen";			
+
+	config.preStyles[2]				=	new Array();			//option 3
+	config.preStyles[2]['name']		=	"Medium & red";
+	config.preStyles[2]['value']	=	"mediumred";
+
+	config.preStyles[3]				=	new Array();			//option 4
+	config.preStyles[3]['name']		=	"Big & blue";
+	config.preStyles[3]['value']	=	"bigblue";
+	//... 
+	//You can add so many options you want, or create them dynamicly with JS,PHP,Perl,ASP ;-)
+	myEditor.registerApiModul(MODUL__listBoxStyleClassGetApiInfoArray(config));//register the plugin to the editor object
+	
+	
+
+	//Registering the "Template" Plugin to the Editor Object (included in listbox_template.js)
+	//This is a great Plugin :-)
+	//This plugin enables the user to choose a peace of a html template (a predefined table or whatever) trought a ListBox which will replace or embed in the current editor content
+
+	//We must tell the Plugin which Templates should be available to the DropDownList and how to insert it into the Editor Content...
+	var config	 							=	new Array();//a config Table for the Plugin
+	config.templates						=	new Array();//a option Table for the DropDownList
+	
+	config.templates[0]						=	new Array();	//Template Option 1
+	config.templates[0]['name']				=	"Template 1 (Maingrid)";	//the Text of the Template option - here you can/must add free text which will describe the Tempalte in the DropDownList
+	config.templates[0]['value']			=	"Template 1";	//Not used yet, but set some uniqe value
+	config.templates[0]['template_url']		=	document.dhtmlEditors_home+'modules/listbox_template_example.html?fake_proxy_and_cache='+Math.random();  	// optional - url of the content of the Template , see templates/*.html for an example how to define such a document, its easy :-) NOTE: the url MUST be located on the same Domain as your Editor!! otherwise you get a browser security error and it will not work!!!!  
+																																			// NOTE: the "fake_proxy_and_cache='+Math.random()" trys to trick out some Cache Issues, this is NOT required for the url but useful
+
+	config.templates[0]['url_content_cache']=	true; 	// if set: the fetched content from template_url will be cached, when the user choose this Template again it will be get from the cache and will it NOT perform a http request to template_url
+	config.templates[0]['template_content']	=	'';		// a valid peace of html code which will be insert
+											   			// Note: if you set both template_content & template_url : template_url will be added first and then template_content
+	config.templates[0]['insert_mode']		=	'replace';		//Set The insert mode
+																// Possible values are replace|top|buttom|cursor   
+																// - replace: 	will completly replace (delete) the current Editor content with the content from the Template
+																// - top: 		will add Template content to the top of the Edtior Content
+																// - buttom:	will add Template content to the buttom of the Edtior Content
+																// - cursor:	will add Template content to the current cursor Position 
+															
+	
+	config.templates[1]						=	new Array();
+	config.templates[1]['name']				=	"Template 2 (Header)";
+	config.templates[1]['value']			=	"Template 2";
+	config.templates[1]['insert_mode']		=	'top';//replace|top|buttom|cursor   
+	config.templates[1]['template_url']		=	'';
+	config.templates[1]['template_content']	=	'<h3>Welcome to my Page</h3>';
+	
+	config.templates[2]						=	new Array();
+	config.templates[2]['name']				=	"Template 3 (Footer)";
+	config.templates[2]['value']			=	"Template 3";
+	config.templates[2]['insert_mode']		=	'buttom';//replace|top|buttom|cursor   
+	config.templates[2]['template_url']		=	'';
+	config.templates[2]['template_content']	=	'<br><hr><strong><em>A Footer Text</em></strong>';
+	
+	config.templates[3]						=	new Array();
+	config.templates[3]['name']				=	"Template 4 (Formular@cursor)";
+	config.templates[3]['value']			=	"Template 4";
+	config.templates[3]['insert_mode']		=	'cursor';//replace|top|buttom|cursor   
+	config.templates[3]['template_url']		=	'';
+	config.templates[3]['template_content']	=	'<h2>A Formular</h2><form><br><input type="text" value="my name"><br><input type="text" value="my@email"><br><input type="submit"><br></form><br>';
+	//... 
+	//You can add so many options you want, or create them dynamicly with JS,PHP,Perl,ASP ;-)
+	myEditor.registerApiModul(MODUL__listBoxTemplateGetApiInfoArray(config));//register the plugin
+	
+	
+
+
+	//Registering the "Line Button" Plugin to the Editor Object (included in button_hr.js)
+	//This Plugin add a new Button to the Editor
+	//When the user click on zhis new button it will insert a line (<HR>) in the content of the edtior 
+	//Just Simple :-)
+	myEditor.registerApiModul(MODUL__HrInsertGetApiInfoArray(
+		'../modules/button_hr.gif' 	//The Url of the image of the button which should use
+									//	i.e.: http://domain.tl/mybutton.gif or /images/mybutton.gif 
+									//	see button_hr.js (at Line ~47) how to set the position of the button
+									//	This button will be shown right from the hyperlink button
+	)); 		
+	//Of Course you can add/register every Plugin more then once, but make this sence ?-)
+	//myEditor.registerApiModul(MODUL__HrInsertGetApiInfoArray('../modules/button_hr.gif')); 		
+	//myEditor.registerApiModul(MODUL__HrInsertGetApiInfoArray('../modules/button_hr.gif')); 		
+	//myEditor.registerApiModul(MODUL__HrInsertGetApiInfoArray('../modules/button_hr.gif')); 		
+									
+
+	
+	//This Plugin is also great ;-)  (included in button_html.js)
+	//This will enable the user to view/edit the HTML Source of the content from the Editor 
+	myEditor.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+	
+
+	//This Plugin act as a Filter, it trys to remove all xml Tags (<?xml....>) from the editor content (only when calling getHtmlSource() or dhtmlEditorPrepareSubmit())
+	//Sometime wenn copy & Pasting content from Word or Excel xml tags are used, perhpas you dont want have xml tags, then just register this plugin
+	myEditor.registerApiModul(MODUL__behaviorRemoveXmlTagsGetApiInfoArray());//included in behavior_remove_xmltags.js
+						
+	
+	
+	//Register the "Hide Menu" Plugin to the Editor Object
+	//This Plugin will hide by default the Menubar from the Editor
+	//myEditor.registerApiModul(MODUL__behaviorMenuInvisible(myEditor));//included in behavior_menu_invisible.js
+	
+	
+	
+
+	//Registering the "CSS" Plugin to the Editor Object (included in behavior_css.js)
+	//This plugin enable you to set css definition to the editor
+	//NOTE: This css definition will ONLY available in the Editor and will not exported via getHtmlsource()
+	myEditor.registerApiModul(MODUL__behaviorLoadCSS(
+		'',// here you can set a url from a stylesheet Document i.e: http://localhost/mystylesheets.css NOTE: the url must global (http://domain.tl/foo.css) otherwise the Editor(ActiveX Control) will ignore the url - If the url empty it will ignore also
+		"body 			{background-color: pink;}\n" 			//here you can set (additional to the url) valid css definitions (without the <style></style> Tags!)
+		+".smallgreen 	{font-size: 10px;   color:green;}\n"
+		+".mediumred 	{font-size: 24px;  color:red;}\n"
+		+".bigblue 		{font-size: 36px;  color:blue;}\n"
+		+".default		{font-size: 16px;  color:black;}\n"
+
+	));	
+	
+	
+	//This Plugin just set the Grid Layout for the edtior Object
+	//MODUL__dhtmlEditorSetGridSmall(myEditor);//included in grid_small.js
+	//...
+	//But we do it manualy 
+	myEditor.setMenuGrid(DECMD_BOLD);
+	myEditor.setMenuGrid('|');
+	myEditor.setMenuGrid(DECMD_SETFORECOLOR);
+	myEditor.setMenuGrid('|');
+	myEditor.setMenuGrid(DECMD_HYPERLINK);	
+	myEditor.setMenuGrid('|');
+		
+	
+
+	
+
+	myEditor.make();
+//-->
+</SCRIPT>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

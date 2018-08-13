@@ -1,0 +1,42 @@
+*** class.upload.php	Wed Nov 27 11:34:56 2002
+--- class.upload.new.php	Fri Dec  6 10:00:38 2002
+***************
+*** 67,84 ****
+              	$destination = $this->archive_dir."/".$filename; // full destination path of file 
+              }
+  
+!             // copy file to temp dir to destination fir
+!             if ( !@copy ($userfile,$destination) ) die ("Impossible to copy $userfile_name from $userfile to destination directory.");
+  
+!             // delete the temp file
+!             if ( !@unlink($userfile) ) die ("Can't delete the TEMP file $userfile_name.");
+  
+! 			return $destination; // return the full path of the file on file system of the server 
+! 		}
+  		else
+          {
+!         	echo $error;
+! 			return false;
+          }
+  
+  	}
+--- 67,85 ----
+              	$destination = $this->archive_dir."/".$filename; // full destination path of file 
+              }
+  
+! 	    // Do some additional checks
+! 	    if(!is_uploaded_file($userfile)) die ("File $userfile_name is not uploaded correctly.");
+  
+! 	    // copy file to temp dir to destination fir and removee the temp file
+  
+! 	    if ( !@move_uploaded_file ($userfile,$destination) ) die ("Impossible to copy $userfile_name from $userfile to destination directory.");
+! 
+! 	    return $destination; // return the full path of the file on file system of the server 
+! 	    }
+  		else
+          {
+! 	    echo $error;
+! 	    return false;
+          }
+  
+  	}

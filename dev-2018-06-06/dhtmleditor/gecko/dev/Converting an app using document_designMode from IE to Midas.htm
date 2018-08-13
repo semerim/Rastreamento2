@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)http://www.mozilla.org/editor/ie2midas.html -->
+<HTML><HEAD><TITLE>Converting an app using document.designMode from IE to Midas.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><LINK 
+href="Converting an app using document_designMode from IE to Midas-Dateien/persistent-style.css" 
+type=text/css rel=stylesheet><LINK href="../images/mozilla-16.png" 
+type=image/png rel=icon>
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bannercell vAlign=top><A class=bannerlink 
+      href="http://www.mozilla.org/"><IMG class=mozillaorgbanner height=58 
+      alt="" 
+      src="Converting an app using document_designMode from IE to Midas-Dateien/mozilla-banner.gif" 
+      width=600> </A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=3 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>
+      <TABLE class=outersidebar border=0>
+        <TBODY>
+        <TR>
+          <TD class=bordercell vAlign=top>
+            <TABLE class=middlesidebar cellSpacing=3 border=0>
+              <TBODY>
+              <TR>
+                <TD class=titlecell vAlign=top>
+                  <TABLE class=innersidebar cellSpacing=3 cellPadding=0 
+border=0>
+                    <TBODY>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/"><B>The 
+                        Mozilla<BR>Organization</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/mozorg.html">At A 
+                      Glance</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/feedback.html">Feedback</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/get-involved.html">Get 
+                        Involved</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/community.html">Newsgroups</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/MPL/">License 
+                    Terms</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/catalog/"><B>Developer 
+                        Docs</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/roadmap.html">Roadmap</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/projects/">Projects</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/ports/">Ports</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/owners.html">Module 
+                        Owners</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/hacking/">Hacking</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/source.html">Get the 
+                        Source</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/build/">Build It</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/quality/"><B>Testing</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/releases/">Download</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bugzilla.mozilla.org/enter_bug.cgi?format=guided">Report 
+                        A Bug</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/bugs/">Bugzilla</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://www.mozilla.org/quality/bug-writing-guidelines.html">Bug 
+                        Writing</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/tools.html"><B>Tools</B></A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://lxr.mozilla.org/seamonkey/">View 
+                      Source</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://tinderbox.mozilla.org/showbuilds.cgi?tree=SeaMonkey">Tree 
+                        Status</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bonsai.mozilla.org/cvsquery.cgi?treeid=default&amp;module=SeaMonkeyAll&amp;branch=HEAD&amp;branchtype=match&amp;dir=&amp;file=&amp;filetype=match&amp;who=&amp;whotype=match&amp;sortby=Date&amp;hours=2&amp;date=day&amp;mindate=&amp;maxdate=&amp;cvsroot=%2Fcvsroot">New 
+                        Checkins</A></TD></TR>
+                    <TR>
+                      <TD></TD>
+                      <TD class=linkcell><A 
+                        href="http://bugzilla.mozilla.org/">Submit A 
+                    Bug</A></TD></TR>
+                    <TR>
+                      <TD class=spacercell></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/faq.html"><B>FAQ</B></A></TD></TR>
+                    <TR>
+                      <TD class=linkcell colSpan=2><A 
+                        href="http://www.mozilla.org/search.html"><B>Search</B></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top>
+      <H2>Converting an app using document.designMode from IE to Midas. </H2>
+      <P>This document provides an overview of porting an application using 
+      Internet Explorer's <SPAN 
+      style="FONT-FAMILY: monospace">document.designMode="on"</SPAN> 
+      functionality over to the new Mozilla Midas API. The first version of 
+      Mozilla that supports Midas fully is 1.3b. Note <SPAN 
+      style="FONT-FAMILY: monospace">contenteditable</SPAN> is not supported by 
+      Mozilla at this time. 
+      <P>A demo of basic Midas functionality is available at <A 
+      href="http://www.mozilla.org/editor/midasdemo">http://www.mozilla.org/editor/midasdemo</A>. 
+      This demo was NOT designed to function on both IE and Mozilla. It will be 
+      updated in the future. Note that there is a great deal of Midas 
+      functionality that goes beyond what IE provides. This will be documented 
+      elsewhere. </P>
+      <P></P>
+      <P>Note that many of the modifications you will have to make to enable 
+      your application to work with Mozilla are not specific to the new editor 
+      functionality - they are general modifications that would need to be made 
+      to make your application work on Mozilla anyway. Most of these are related 
+      to areas where Internet Explorer is not compliant with W3C specifications. 
+      </P>
+      <OL>
+        <LI>
+        <P>All instances of <SPAN 
+        style="FONT-FAMILY: monospace">document.all.element</SPAN> must be 
+        replaced by <SPAN 
+        style="FONT-FAMILY: monospace">document.getElementById('element')</SPAN>. 
+        When you do this, you must make sure that all your elements actually 
+        have an "id" attribute, since <SPAN 
+        style="FONT-FAMILY: monospace">document.all</SPAN> works with both "id" 
+        and "name" attributes. </P>
+        <P>In addition, any places where you reference elements directly by name 
+        must be changed to use <SPAN 
+        style="FONT-FAMILY: monospace">getElementById</SPAN> as well. For 
+        example, IE allows you to reference the style of a table element by 
+        using <SPAN style="FONT-FAMILY: monospace">tablecell.style</SPAN> - with 
+        Mozilla, you must use <SPAN 
+        style="FONT-FAMILY: monospace">document.getElementById('tablecell').style</SPAN>.</P>
+        <P>Finally, IE provides different arrays such as frames, so that you can 
+        use <SPAN style="FONT-FAMILY: monospace">frames.iframename</SPAN>. For 
+        Mozilla, you must use <SPAN 
+        style="FONT-FAMILY: monospace">document.getElementById</SPAN> to 
+        reference the iframe. </P>
+        <LI>
+        <P>IE allows the <SPAN style="FONT-FAMILY: monospace">focus()</SPAN> 
+        method to be used directly on an iframe. Technically, the focus method 
+        should be executed against the contentWindow. The following code 
+        fragment can be used to replace <SPAN 
+        style="FONT-FAMILY: monospace">iframe.focus()</SPAN> and will work with 
+        IE and Mozilla.</P><PRE>document.getElementById("iframe").contentWindow.focus()
+</PRE>
+        <LI>
+        <P>Setting <SPAN 
+        style="FONT-FAMILY: monospace">document.designMode</SPAN> <STRONG>must 
+        NOT</STRONG> be done in the <SPAN 
+        style="FONT-FAMILY: monospace">script</SPAN> section of the <SPAN 
+        style="FONT-FAMILY: monospace">head</SPAN>. We suggest the onLoad 
+        function for the body where the iframe is contained.</P>
+        <LI>
+        <P>On IE, the document is obtained like this: <SPAN 
+        style="FONT-FAMILY: monospace">iframename.document</SPAN>. This is then 
+        used to do things like execCommand, etc. This does not work on Mozilla. 
+        You must use <SPAN 
+        style="FONT-FAMILY: monospace">document.getElementById("iframename").contentWindow.document</SPAN>. 
+        This method works on IE as well. </P>
+        <LI>
+        <P>If you would like to provide tooltip text for your toolbar buttons, 
+        you must use the title= attribute for images in addition to the alt= 
+        attribute. The alt= attribute is provided for accessibility purposes and 
+        while IE does allow it to be used for tooltips, the W3C compliant way is 
+        to use title= which works on both IE and Mozilla. For more information, 
+        please see: <A 
+        href="http://www.hixie.ch/advocacy/alttext">http://www.hixie.ch/advocacy/alttext</A>. 
+        </P>
+        <LI>
+        <P>Currently, the command "createlink" does not support displaying a 
+        user interface. You use Javascript to query the URL from the user. For 
+        instance: <PRE>var szURL = prompt("Enter the URL", "");
+.
+.
+.
+getDocument().execCommand('createlink',false,szURL);
+</PRE>
+        <P></P>
+        <LI>
+        <P>Due to ambiguity in the Microsoft specification for execCommand, 
+        Mozilla requires that you specify all three parameters in order to 
+        guarantee the behavior you are expecting. </P>
+        <LI>
+        <P>In researching the parameters to <SPAN 
+        style="FONT-FAMILY: monospace">formatblock</SPAN> for execCommand, we 
+        have determined that the current use of "Heading 1", "Preformatted", 
+        "Normal", etc. in most editors on the web is incorrect. These words are 
+        translated, so if you hardcode them in your application, it will not 
+        function on non-English browsers. Microsoft has provided non-localized 
+        versions of these identifiers and we suggest that they be used to 
+        guarantee your application works in all versions of IE, as well as 
+        Mozilla. Note that in all of our research, the Normal identifiers 
+        functions exactly like the Paragraph identifier. </P>
+        <P>Here is the mapping: </P>
+        <TABLE border=1>
+          <TBODY>
+          <TR>
+            <TD>Localized Version</TD>
+            <TD>Equivalent</TD></TR>
+          <TR>
+            <TD>Normal</TD>
+            <TD>&lt;P&gt;</TD></TR>
+          <TR>
+            <TD>Heading 1</TD>
+            <TD>&lt;H1&gt;</TD></TR>
+          <TR>
+            <TD>Heading 2</TD>
+            <TD>&lt;H2&gt;</TD></TR>
+          <TR>
+            <TD>Heading 3</TD>
+            <TD>&lt;H3&gt;</TD></TR>
+          <TR>
+            <TD>Heading 4</TD>
+            <TD>&lt;H4&gt;</TD></TR>
+          <TR>
+            <TD>Heading 5</TD>
+            <TD>&lt;H5&gt;</TD></TR>
+          <TR>
+            <TD>Heading 6</TD>
+            <TD>&lt;H6&gt;</TD></TR>
+          <TR>
+            <TD>Paragraph</TD>
+            <TD>&lt;P&gt;</TD></TR>
+          <TR>
+            <TD>Preformatted</TD>
+            <TD>&lt;PRE&gt;</TD></TR>
+          <TR>
+            <TD>Address</TD>
+            <TD>&lt;ADDRESS&gt;</TD></TR></TBODY></TABLE>
+        <LI>
+        <P>View source must be done differently for Mozilla. Here is a mapping 
+        between the two methods. </P>
+        <P>IE method to switch to source view: </P><PRE>iHTML = getDocument().body.innerHTML;
+getDocument().body.innerText = iHTML;
+</PRE>
+        <P>Mozilla method to switch to source view: </P><PRE>var html = document.createTextNode(getDocument().body.innerHTML);
+getDocument().body.innerHTML = "";
+getDocument().body.appendChild(html);
+</PRE>
+        <P>IE method to switch back to regular view: </P><PRE>iText = getDocument().body.innerText;
+getDocument().body.innerHTML = iText;
+</PRE>
+        <P>Mozilla method to switch back to regular view: </P><PRE>var html = getDocument().body.ownerDocument.createRange();
+html.selectNodeContents(getDocument().body);
+getDocument().body.innerHTML = html.toString();
+</PRE>
+        <P></P>
+        <LI>
+        <P>Inserting arbitrary HTML is not supported at this time. For an 
+        example of how to insert a table, plese see the demo at <A 
+        href="http://www.mozilla.org/editor/midasdemo">http://www.mozilla.org/editor/midasdemo</A> 
+        </P>
+        <LI>The <SPAN style="FONT-FAMILY: monospace">print</SPAN> option to 
+        execCommand does not work with Mozilla. To print the document, simply 
+        call the <SPAN style="FONT-FAMILY: monospace">print()</SPAN> function on 
+        contentWindow. For example: <PRE>document.getElementById("iframe").contentWindow.print();
+</PRE>
+        <LI>The <SPAN style="FONT-FAMILY: monospace">backcolor</SPAN> option to 
+        execCommand behaves differently on Mozilla than on IE. It sets the 
+        background of the entire document. If you just want to hilite text, 
+        similar to the way backcolor behaves on IE, use <SPAN 
+        style="FONT-FAMILY: monospace">hilitecolor</SPAN>. 
+        <LI>
+        <P>If you would like to detect whether or not the version of Mozilla 
+        that is being used support Midas at all, you can use this code 
+        snippet:</P><PRE>document.getElementById('edit').contentDocument.designMode = "on";
+try {
+  document.getElementById('edit').contentDocument.execCommand("undo", false, null);
+}  catch (e) {
+  alert("This demo is not supported on your level of Mozilla.");
+}
+</PRE></LI></OL></TD></TR>
+  <TR>
+    <TD vAlign=top align=right colSpan=2>
+      <DIV class=documentinfo>Copyright © 1998-2003 The Mozilla Organization. 
+      <BR>Last modified January 30, 2003. <BR><A 
+      href="http://www.mozilla.org/webtools/bonsai/cvslog.cgi?file=mozilla-org/html/editor/ie2midas.html&amp;rev=&amp;root=/cvsroot/">Document 
+      History</A>. <BR><A 
+      href="http://doctor.mozilla.org/?file=mozilla-org/html/editor/ie2midas.html">Edit 
+      this Page</A>. </DIV></TD></TR></TBODY></TABLE></BODY></HTML>

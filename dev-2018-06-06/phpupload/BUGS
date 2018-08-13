@@ -1,0 +1,9 @@
+English
+
+CORERCT: don't upload the file if you insert a empty string as destination dir
+
+--------
+
+Italiano
+
+CORRETTO: non consentel'upload se si inserisce una stringa vuota come directory di destinazione dei file

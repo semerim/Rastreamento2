@@ -1,0 +1,21 @@
+Version 1.2
+------------
+- You can insert width and height of the thumb, 
+  the class autodetect longer side of the image and create a thumb using width or height inserted
+
+- New splitFilePath method to extract file name and path from a complete path2file string, returned from putFile
+  and miniatura method (see readme for more information).
+  
+- minor bugs fixed (see bugs).
+
+- thanks to Mikhael Korneev for the patch, Bob Abbott, Simon Mann, Luke Hartman for the suggestions and help.
+
+
+Version 1.1
+------------
+- GD version autodetect
+
+
+Version 1.0
+------------
+- initial release

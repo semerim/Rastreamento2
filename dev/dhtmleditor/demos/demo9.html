@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+		//Load Plugin Librarie(s)
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_styleclass.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_template.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_hr.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_html.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_remove_xmltags.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_menu_invisible.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_css.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/grid_small.js"></SCRIPT>');
+		
+										
+	 // -->
+</SCRIPT>
+</head>
+<body>
+Multible Instances of the Editor with different Settings<br>
+See this source for details<br>
+<br>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+		{
+			var myEditor	=	new dhtmlEditor;
+			myEditor.setHeight(100);
+			myEditor.registerApiModul(MODUL__behaviorMenuInvisible(myEditor));
+			myEditor.registerApiModul(MODUL__behaviorLoadCSS('',"body  {background-color: yellow;}"));	
+			myEditor.make();
+			//myEditor.make(); call only once! otherwise you get an error 
+			document.write('<br><br>');
+
+
+			var myEditor	=	new dhtmlEditor;
+			myEditor.setHeight(200);
+			MODUL__dhtmlEditorSetGridSmall(myEditor);
+			myEditor.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));
+			myEditor.registerApiModul(MODUL__behaviorLoadCSS('',"body  {background-color: red;}"));	
+			myEditor.make();
+			document.write('<br><br>');
+
+			var myEditor	=	new dhtmlEditor;
+			myEditor.registerApiModul(MODUL__behaviorLoadCSS('',"body  {background-color: blue;}"));	
+			myEditor.make(false,500,300,"<b>Initial Content</b>");
+			// Constructor of make()
+			// make(objectId, width, height, initContent);
+			// objectId:	Each Editor needs a internal objectId (for the <opbject> Tag) you can set this or set it to false then the id will be generate automaticaly
+			// width:  		width  of the editor in pixel
+			// height: 		height of the editor in pixel
+			// initContent: Initial Content of the Editor (no <html>,<head>,<title>,<body> Tags allowed)
+			document.write('<br><br>');
+
+			var myEditor	=	new dhtmlEditor;
+			myEditor.disableButton('ALL');
+			myEditor.make(false,600,400,'<b>Initial Content 2</b>');
+		
+
+		}
+//-->
+</SCRIPT>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

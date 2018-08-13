@@ -1,0 +1,155 @@
+TABLE   {empty-cells: show}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #000000;
+    color: #E2F5E0;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 10%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+         
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #cccccc transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}	
+
+th.visao_header
+        {font-family: Arial, Helvetica, sans-serif;
+         font-style: normal;
+         vertical-align: middle;
+         border-top: 2px solid white;
+         background: #0060A0;
+         color: white;
+         padding-right: 5px;
+         font-size: 8pt}
+
+th.cabec_visao
+       {font-family: "Trebuchet MS";
+        border-top: 2px solid white;
+        font-size: 14pt;
+        border-top: 2px solid white;
+	    color: #333366;
+	    font-weight: bold;}
+
+td.visao_detail
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           font-style: normal;
+           font-size: 11px;}
+
+td1.visao_detail
+          {font-family: Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           border-top: 1px solid white;
+           font-style: normal;
+           background: #DDEAF1;
+           padding-right: 5px;
+           font-size: 10px;}
+
+a:link  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+         color1: white}
+
+a:visited
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+	     color1: white}
+
+
+a:hover {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: underline;
+         font-style: normal;
+         font-size: 11px}
+
+BODY1 {
+	SCROLLBAR-FACE-COLOR: #0060A0; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #0060A0; SCROLLBAR-3DLIGHT-COLOR: #6193e4; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #0060A0; SCROLLBAR-DARKSHADOW-COLOR: #000000 }
+
+   /* TreeMenu.css
+  A component of HTML_TreeMenu as extended by Chip Chapin
+  2002-10-31 Chip Chapin
+*/
+.tmenu0text {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+}
+.tmenu1text {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+}
+.tmenu2text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-style: italic;
+}
+.tmenu3text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+}
+
+/* Since all menu items are links, the following is equally important
+ * to your menu appearance.
+ * The main thing you may want to change are the A:link and A:visited colors.
+ */
+*.tmenu0text A:link,*.tmenu1text A:link,*.tmenu2text A:link,*.tmenu3text A:link
+  { text-decoration:none; font-color:black; color1:#505080 }
+*.tmenu0text A:visited,*.tmenu1text A:visited,*.tmenu2text A:visited,*.tmenu3text A:visited
+  { text-decoration:none; font-color:black; color1:#505080 }
+*.tmenu0text A:active,*.tmenu1text A:active,*.tmenu2text A:active,*.tmenu3text A:active
+  { text-decoration:none; font-color:black; color1:#805050 }
+*.tmenu0text A:hover,*.tmenu1text A:hover,*.tmenu2text A:hover,*.tmenu3text A:hover
+  { text-decoration:underline; font-color:black; color1:#FF0000 }
+
+/* .tmlistbox controls the appearance of Listbox menus */
+.tmlistbox {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;  /* match 'smalltext' value */
+  font-size-adjust: 0.58; /* Verdana */
+  margin-bottom: 0px;
+}
+
+/* .tmenuSelected is used with linkSelectKey to highlight selected items */
+.tmenuSelected {
+  background-color: yellow;
+}
+*.tmenuSelected A:link    { text-decoration:none; font-color:black; color1:#2020ff }
+*.tmenuSelected A:visited { text-decoration:none; font-color:black; color1:#2020ff }
+*.tmenuSelected A:active  { text-decoration:none; font-color:black; color1:#ff2020 }
+*.tmenuSelected A:hover   { text-decoration:underline; font-color:black; color1:#FF0000 }

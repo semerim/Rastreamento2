@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+	 // -->
+</SCRIPT>
+</head>
+<body>
+
+A replaced Textarea ;-)<br>
+See this source for details<br>
+<br>
+<form name="myForm" method="post">
+	<textarea id="myTextareaID" name="myTextareaName" style="width:600px; height:200px"><p>I was Textarea</p></textarea>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	<!--
+		var myEditor	=	new dhtmlEditor;
+		myEditor.make_andReplaceTextarea('myTextareaID');
+		
+		/*
+			Description of make_andReplaceTextarea(TextareaID);
+			- with make_andReplaceTextarea() you can easy "replace" a existing textarea with the dhtml editor ;-)
+			- the textarea needs a id atribute <textarea id="myTextareaID" ...>
+			- you MUST give this id make_andReplaceTextarea() as first string argument that the editor knows which textarea should be replaced
+			- when you want post the formular you can/should first call dhtmlEditorPrepareSubmit() to fetch the content from the dhtml editor to the textarea automaticaly - see Button "Post Method 1" for example
+			- Or you can fetch it manualy - see Button "Post Method 2" for example 
+			- NOTE: if you have multible instances of the editor #dhtmlEditorPrepareSubmit() will fetch all content automaticaly this will help you a lot and you can work very transparantly with existings Web Aplication
+			-       See demo12.html how to use it witch multible instances of the editor
+			
+		*/
+	
+	//-->
+	</SCRIPT>	
+	<br><input type="button" value="Post Method 1" onclick="dhtmlEditorPrepareSubmit();alert(document.myForm.myTextareaName.value);/* document.myForm.submit(); */">
+	<br><input type="button" value="Post Method 2" onclick="myForm.myTextareaName.value=myEditor.getHtmlSource();alert(document.myForm.myTextareaName.value);/* document.myForm.submit(); */">
+	
+	
+</form>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

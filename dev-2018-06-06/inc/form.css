@@ -1,0 +1,99 @@
+dummy  {bla1: 11;
+       }
+
+th1      {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-weight: bold;
+         font-style: normal;
+         font-size: 8pt}
+
+td1      {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         font-size: 8pt}
+
+td.cabec_tabela1
+        {color: black;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-weight: bold;
+         font-style: normal;
+         font-weight: bold;
+         background-color: #C7ECC4;
+         font-size: 18px;}
+
+td.tabela1
+        {color: black;
+         background-color: #E2F5E0;
+         font-size: 12px;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         }
+td.tabela2
+        {color: black;
+         background-color: white;
+         font-size: 12px;
+			font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+		  	border-style: solid;
+		  	border: solid #cccccc 0.03em;
+         font-style: normal;
+         }
+
+TEXTAREA
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         font-size: 8pt;
+         background : white}
+SELECT
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         font-size: 8pt;
+         background : white}
+
+INPUT   {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.botao
+        {font-family: Verdana, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+a
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt;
+         color: #003399}
+
+.bot {
+		font-family: Arial, Trebuchet MS, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font1-weight: bold;
+		color1: #003366;
+      color: black;
+		background-color: #C4C4C4;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: #CCCCCC;
+		border-right-color: #666666;
+		border-bottom-color: #666666;
+		border-left-color: #CCCCCC;
+		cursor: hand;
+	}

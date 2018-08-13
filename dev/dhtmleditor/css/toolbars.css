@@ -1,0 +1,93 @@
+.sglButton
+{
+    BACKGROUND-COLOR: buttonface; 
+	BORDER-BOTTOM: buttonface solid 1px; 
+    BORDER-LEFT: buttonface solid 1px; 
+    BORDER-RIGHT: buttonface solid 1px; 
+    BORDER-TOP:  buttonface solid 1px; 
+    HEIGHT: 23px; 
+    WIDTH: 23px;
+}
+.sglIcon
+{
+    POSITION: RELATIVE;
+	LEFT: 0px;
+	TOP: px;
+}
+
+.sglIconDown
+{
+    POSITION: RELATIVE;
+	LEFT: +1;
+	TOP: +1;
+}
+
+
+.sglButtonMouseOverUp
+{
+    BACKGROUND-COLOR: buttonface; 
+    BORDER-BOTTOM: buttonshadow solid 1px; 
+    BORDER-LEFT: buttonhighlight solid 1px; 
+    BORDER-RIGHT: buttonshadow solid 1px; 
+    BORDER-TOP:  buttonhighlight solid 1px; 
+    HEIGHT: 23px; 
+    WIDTH: 24px;
+}
+.sglButtonMouseOverDown
+{
+    BACKGROUND-COLOR: buttonface; 
+    BORDER-BOTTOM: buttonhighlight solid 1px; 
+    BORDER-LEFT: buttonshadow solid 1px; 
+    BORDER-RIGHT: buttonhighlight solid 1px; 
+    BORDER-TOP:  buttonshadow solid 1px; 
+    HEIGHT: 23px; 
+    WIDTH: 24px;
+}
+.sglButtonDown
+{
+    BACKGROUND-COLOR: gainsboro; 
+    BORDER-BOTTOM: buttonhighlight solid 1px; 
+    BORDER-LEFT: buttonshadow solid 1px; 
+    BORDER-RIGHT: buttonhighlight solid 1px; 
+    BORDER-TOP:  buttonshadow solid 1px; 
+    HEIGHT: 23px; 
+    WIDTH: 24px;
+}
+.sglSeparator
+{
+	BORDER-LEFT: buttonshadow solid 1px; 
+	BORDER-RIGHT: buttonhighlight solid 1px; 
+	FONT-SIZE: 0px; 
+	HEIGHT: 22px; 
+	WIDTH: 1px; 
+}
+.sglSeparatorLine
+{
+	BORDER-LEFT: buttonshadow solid 1px; 
+	BORDER-RIGHT: buttonhighlight solid 1px; 
+	FONT-SIZE: 0px; 
+	HEIGHT: 1px; 
+}
+.sglGeneral
+{
+    HEIGHT: 22px; 
+}
+
+.sglMenuIconMouseOver
+{
+    BACKGROUND-COLOR: buttonface; 
+    BORDER-BOTTOM: buttonshadow solid 1px; 
+    BORDER-LEFT: buttonhighlight solid 1px; 
+    BORDER-RIGHT: buttonshadow solid 1px; 
+    BORDER-TOP:  buttonhighlight solid 1px; 
+}
+.sglToolbar
+{
+    BACKGROUND-COLOR: buttonface; 
+    BORDER-BOTTOM: buttonshadow solid 1px; 
+    BORDER-LEFT: buttonhighlight solid 1px; 
+    BORDER-RIGHT: buttonshadow solid 1px; 
+    BORDER-TOP:  buttonhighlight solid 1px; 
+    HEIGHT: 27px; 
+}
+

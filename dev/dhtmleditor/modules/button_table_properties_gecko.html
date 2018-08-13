@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+	<title>Set Table Preferences :: Gecko's Midas DhtmlEditor</title>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+//document.writeln('<title>'+window.dialogArguments['title']+'</title>');
+//-->
+</SCRIPT>
+
+<STYLE TYPE="text/css">
+ BODY   {margin-left:10; font-family:Verdana; font-size:12; background:menu}
+ BUTTON {width:5em}
+ TABLE,TD,INPUT  {font-family:Verdana; font-size:10px}
+ P      {text-align:center}
+</STYLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+	function _return(info,close_)
+		{
+			var t;
+			var i;
+			
+			for(t in info)
+				{
+					for(i=0;i<info[t]['att'].length;i++)
+						{
+							var v=document.formd['info['+t+'][att]['+i+']'].value;
+							if(!v.toString().length)
+								{
+									info[t]['node'].removeAttribute(info[t]['att'][i]);
+									continue;
+								}
+							info[t]['node'].setAttribute(info[t]['att'][i],v);	
+						}
+				}
+			//opener.MODUL__TableProperties_ONCLICK_GECKO__GUIdid(info);
+			if (close_) window.close();
+		}
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE=JavaScript FOR=document EVENT=onkeydown>
+/*	
+if (event.keyCode == 27) 	self.close();
+if (event.keyCode == 114)	
+	{
+		dialogWidth	=	parseInt(dialogWidth)+20+'px';
+		dialogHeight	=	parseInt(dialogHeight)+20+'px';
+	}
+if (event.keyCode == 115 && parseInt(dialogWidth)>20 && parseInt(dialogHeight)>20)	
+	{
+		dialogWidth	=	parseInt(dialogWidth)-20+'px';
+		dialogHeight	=	parseInt(dialogHeight)-20+'px';
+	}
+*/
+</SCRIPT>	
+
+</HEAD>
+<BODY>
+	<table><tr><td align="center">
+	<form name=formd>
+		<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+		<!--
+		var t;
+		var i;
+		var info	=	opener.document.MODUL__TableProperties_ONCLICK_GECKO__GUIINFO;
+		document.writeln('<TABLE  CELLSPACING=0 cellpadding=3 border=1>');
+			document.writeln('<TR valign="top">');
+			for(t in info)
+				{
+					document.writeln('<TD><b>'+info[t]['desc']+'</b><br>');
+						
+						document.writeln('<TABLE CELLSPACING=1 border=0>');
+							for(i=0;i<info[t]['att'].length;i++)
+								{
+									document.writeln('<TR valign="top">');
+										document.writeln('<TD>');
+											document.writeln(info[t]['att'][i]);
+										document.writeln('</TD>');
+										document.writeln('<TD>');
+											var v=info[t]['node'].getAttribute(info[t]['att'][i]);
+											if(v==null) v='';
+											document.writeln('<input name="info['+t+'][att]['+i+']" type="text" value="'+v.toString()+'" size=10>');
+										document.writeln('</TD>');
+									document.writeln('</TR>');
+								}
+						document.writeln('</TABLE>');
+
+					document.writeln('</TD>');
+				}
+			document.writeln('</TR>');
+		document.writeln('</TABLE>');
+
+
+		//-->
+		</SCRIPT>
+
+		<input TYPE=button value="OK" onclick="_return(info,1)">
+		<input TYPE=button value="Set" onclick="_return(info)">
+		<input type=button value="Cancel" ONCLICK="window.close();">
+	</form>
+</td></tr></table>
+</BODY>
+</HTML>

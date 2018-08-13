@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+
+		// where is the location of the home of the main script
+		// NOTE: default = "dhtmleditor/" if not set
+		// NOTE: MUST have a leading slash
+		// NOTE: can be relative, absolut or global
+
+		//document.dhtmlEditors_home='/dhtmleditor/';						//absolut
+		//document.dhtmlEditors_home='http://localhost/dhtmleditor/';		//global
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+	 // -->
+</SCRIPT>
+</head>
+<body>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">if (!window.dhtmlEditor) alert('Failed to load dhtml librarays for the DHTML Editor '+document.dhtmlEditors_home+'js/lib.js' );</SCRIPT>
+
+
+Simple Interaction with the Editor<br>
+See this source for details<br>
+<a href="javascript:void(myEditor.setHtmlSource(window.prompt('Imput some html code','<h3>My Headline</h3>')));">myEditor.setHtmlSource()</a><br>
+<a href="javascript:void(alert(myEditor.getHtmlSource()));">myEditor.getHtmlSource()</a><br>
+<br>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	// OK - after the dhtml Javascript lib is loaded we can create a dhtml editor by following peace of code
+	var myEditor	=	new dhtmlEditor;
+	myEditor.make();
+//-->
+</SCRIPT>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

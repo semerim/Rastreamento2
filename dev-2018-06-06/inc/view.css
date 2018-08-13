@@ -1,0 +1,122 @@
+dummy  {bla1: 11;
+       }
+
+SELECT.select
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.edit
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+INPUT.botao
+        {font-family: Verdana, Arial, Helvetica, sans-serif;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 8pt}
+
+td.cabec_tabela1
+			  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           	color: black;
+				font-weight: bold;
+				background-color: white;
+            font-size: 14px;
+			  	border-style: solid;
+			  	border: solid #cccccc 0.03em;
+            }
+
+td.cabec_tabela2
+			  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           	color: black;
+				font-weight: bold;
+				background-color: white;
+            font-size: 18px;
+			  	border-style: solid;
+			  	border: solid #cccccc 0.03em;
+            }
+
+th.sel_header
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           background-color: #C7ECC4;
+           text-decoration: none;
+			  border-style: solid;
+			  border: solid #cccccc 0.03em;
+           font-style: normal;
+           font-size: 13px;}
+
+td.sel_detail
+          {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+           text-decoration: none;
+           background-color: white;
+			  border-style: solid;
+			  border: solid #cccccc 0.03em;
+           font-style: normal;
+           font-size: 11px;}
+
+a:link  {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+         color1: #003399}
+
+a:visited
+        {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: none;
+         font-style: normal;
+         font-size: 11px;
+	      color1: #003399}
+
+
+a:hover {font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+         color: black;
+         text-decoration: underline;
+         font-style: normal;
+         font-size: 11px}
+
+body.bottom	{
+			background: #C7ECC4;
+         }
+
+body.middle	{
+			background: #EDF9EC;
+         }
+
+body.btnMid	{
+			background: #EDF9EC;
+         }
+
+body.top2	{
+			background: #EDF9EC;
+         }
+
+body.top1	{
+			background: #EDF9EC;
+         }
+
+.bot {
+		font-family: Arial, Trebuchet MS, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font1-weight: bold;
+		color1: #003366;
+      color: black;
+		background-color: #C4C4C4;
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: #CCCCCC;
+		border-right-color: #666666;
+		border-bottom-color: #666666;
+		border-left-color: #CCCCCC;
+		cursor: hand;
+	}

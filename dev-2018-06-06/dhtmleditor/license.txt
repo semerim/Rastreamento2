@@ -1,0 +1,5 @@
+// Copyright 2002,2003 by Hans-Jürgen Petrich - Germany Berlin <petrich@tronic-media.com>
+// Free for Private use ;-) if not removing or changing the (contents of)lincense.txt and copyrights in the source 
+// For any kind of commercial usage this script's requires a license 
+// Please contact petrich@tronic-media.com for a license request 
+// Prices available @ http://www.p42.net/total_commander/p/read.php?f=6&i=63&t=62

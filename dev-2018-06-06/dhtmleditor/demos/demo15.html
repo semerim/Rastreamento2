@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+		//Load Plugin Librarie(s)
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_styleclass.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_template.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_hr.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_html.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_remove_xmltags.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_menu_invisible.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_css.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/grid_small.js"></SCRIPT>');
+	 // -->
+</SCRIPT>
+</head>
+<body>
+
+Lets mix all<br>
+See this source for details<br>
+<br>
+<form name="myForm">
+
+	<textarea id="myTextareaID1" name="myTextareaName1" style="width:720px; height:200px"><p>Editor 1</p></textarea><br><br>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	<!--
+		//See demo1.html - demo14.html for details and description of each functionality
+		
+		var myEditor1		=	new dhtmlEditor;
+		var myEditor2		=	new dhtmlEditor;
+		var myEditor3		=	new dhtmlEditor;
+
+		
+		myEditor1.registerApiModul(MODUL__behaviorLoadCSS('',"body {background-color: pink;}\n"));	
+		myEditor1.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+		myEditor1.make_andReplaceTextarea('myTextareaID1');
+				
+		document.write('<br>');
+		
+		myEditor2.setHeight(100);
+		myEditor2.setHtmlSource('<p>Editor 2</p>');
+		myEditor2.registerApiModul(MODUL__behaviorMenuInvisible(myEditor2));//included in behavior_menu_invisible.js
+		myEditor2.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+		myEditor2.make_andCreateTextarea('myTextareaName2');
+
+	//-->
+	</SCRIPT>	
+
+	<!-- Manualy -->	
+	<textarea name="myTextareaName3" style="visibility:hidden; width:1px; height:1px">Editor 3</textarea>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+    <!--
+		myEditor3.setWidth(430);
+		myEditor3.setHeight(200);
+		myEditor3.registerApiModul(MODUL__behaviorLoadCSS('',"body {background-color: green;}\n"));	
+		myEditor3.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+		MODUL__dhtmlEditorSetGridSmall(myEditor3);
+		myEditor3.setHtmlSource('<p>Editor 3</p>');
+    	myEditor3.make();
+		
+    //-->
+    </SCRIPT>
+<br><hr><br>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	function SubmitForm()
+		{
+			dhtmlEditorPrepareSubmit();//Fetching all the content from the editors to the Textarteas automaticaly
+
+			//we must fetch the content from myEditor3 manualy to <textarea name="myTextareaName3"...>
+			//because myEditor3.make() was not replaced or created any textarea - it just a dhtml editor object 
+			//but its easy to do this ;-)
+			document.myForm.myTextareaName3.value = myEditor3.getHtmlSource();
+			
+			//OK now we are ready to submit the form to a Webserver
+			//document.myForm.submit();
+			
+			
+			//Debug
+			alert("Content of hidden Textarea 1 (Editor 1):\n"+document.myForm.myTextareaName1.value);
+			alert("Content of hidden Textarea 2 (Editor 2):\n"+document.myForm.myTextareaName2.value);
+			alert("Content of hidden Textarea 3 (Editor 3):\n"+document.myForm.myTextareaName3.value);
+			
+			
+			return true;
+			
+			
+			
+			
+			
+			//myForm.submit();//Then we sumbit the form
+			
+			//Debug:
+			
+			return true;
+		}
+//-->
+</SCRIPT>
+
+<input type="button" value="Post the good stuff" onclick="SubmitForm()">
+</form>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

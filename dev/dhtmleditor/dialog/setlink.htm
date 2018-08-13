@@ -1,0 +1,151 @@
+
+<HTML>
+<HEAD>
+<TITLE>Set Hyperlink</TITLE>
+
+<STYLE TYPE="text/css">
+ BODY   {margin-left:10; font-family:Arial; font-size:10; background:menu}
+ BUTTON {width:7em}
+ TABLE  {font-family:Arial; font-size:10}
+ P      {text-align:center}
+</STYLE>
+
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+
+
+function set_target(s_obj)
+	{
+		var tval			=	s_obj.options[s_obj.selectedIndex].value;
+		HREFtarget.value	=	tval;
+	}
+
+
+
+function IsDigit()
+{
+  return ((event.keyCode >= 48) && (event.keyCode <= 57))
+}
+// -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=window EVENT=onload>
+<!--
+
+
+  for ( elem in window.dialogArguments )
+  {
+  	if (elem=='link')
+		{
+	      HREFlink.value = window.dialogArguments["link"];
+		  if (!HREFlink.value) HREFlink.value='';
+		
+		}
+	if (elem=='target')
+		{
+	      HREFtarget.value = window.dialogArguments["target"];
+		  
+		  //if (!HREFtarget.value) HREFtarget.value='_self';
+		}
+  
+  
+  
+  
+  
+    
+  }
+// -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=Ok EVENT=onclick>
+<!--
+  var arr = new Array();
+  
+  arr["link"] 	= HREFlink.value;
+  arr["target"] = HREFtarget.value;
+  window.returnValue = arr;
+  window.close();
+// -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<table cellpadding="6" cellspacing="" border="0">
+	<tr>
+		<td>
+			<fieldset><legend>Hyperlink information</legend>
+			<table>
+				<tr>
+					<td>URL</td>
+					<td><INPUT TYPE=TEXT SIZE=40 NAME=HREFlink></td>
+				</tr>
+				<tr>
+					<td>Target</td>
+					<td>
+										<script>
+											var config	=	window.dialogArguments["config"];
+											if (!config) 
+												{
+													config = new Array();
+													config['advanced'] = 0;
+												}
+
+
+											if (config['advanced'] == 1)
+												{
+													document.writeln('<INPUT TYPE=TEXT SIZE=10 NAME=HREFtarget>');
+													document.writeln('&nbsp;&nbsp;&nbsp;&nbsp;');
+													document.writeln('<img align="middle"  src="../images/target.gif" alt="Choose Target here --&gt;" width="23" height="22" border="0" title="Choose Target here --&gt;">');
+												}
+											else
+												{
+													
+													document.writeln('<INPUT TYPE=HIDDEN NAME=HREFtarget>');
+												}
+										</script>
+
+						<select onchange="set_target(this)" title="Choose Target here">						
+											<option value=""></option>
+
+											<option value="_self">Open link in same window</option>
+											<option value="_blank">Open link in new window</option>
+											<script>
+												if (config['advanced'] == 1)
+													{
+														document.writeln('<option value="_blank">_blank</option>');
+														document.writeln('<option value="_self">_self</option>');
+														document.writeln('<option value="_parent">_parent</option>');
+														document.writeln('<option value="_top">_top</option>');
+													}
+											</script>
+
+						</select>
+						
+						
+					</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td>
+						<a href="#" onclick="HREFtarget.value='';HREFlink.value='mailto:';HREFlink.focus();">Click here to set an email address link</a>
+					</td>
+				</tr>
+			</table>
+			</fieldset>
+
+		</td>
+		<td>
+			<BUTTON ID=Ok TYPE=SUBMIT>OK</BUTTON><br>
+			<BUTTON ONCLICK="window.close();">Cancel</BUTTON>
+		</td>
+	</tr>
+</table>
+
+ 	
+
+
+
+</BODY>
+</HTML>

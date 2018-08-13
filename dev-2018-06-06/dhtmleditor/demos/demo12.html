@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+	 // -->
+</SCRIPT>
+</head>
+<body>
+
+Multible replaced Textarea ;-)<br>
+See this source for details<br>
+<br>
+<form name="myForm" method="post">
+	Textarea (1)<br><textarea id="myTextareaID1" name="myTextareaName1" style="width:600px; height:100px"><p>Editor (1)</p></textarea><br><br>
+	Textarea (2)<br><textarea id="myTextareaID2" name="myTextareaName2" style="width:600px; height:100px"><p>Editor (2)</p></textarea><br><br>
+	Textarea (3)<br><textarea id="myTextareaID3" name="myTextareaName3" style="width:600px; height:100px"><p>Editor (3)</p></textarea><br><br>
+	
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	<!--
+		//see demo11.html for description of make_andReplaceTextarea()
+
+
+		var myEditor1	=	new dhtmlEditor;
+		var myEditor2	=	new dhtmlEditor;
+		var myEditor3	=	new dhtmlEditor;
+		
+		//ofcourse you can use a while() or a for() construct for this all ;-)
+
+		myEditor1.make_andReplaceTextarea('myTextareaID1');
+		myEditor2.make_andReplaceTextarea('myTextareaID2');
+		myEditor3.make_andReplaceTextarea('myTextareaID3');
+
+	//-->
+	</SCRIPT>	
+<br>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	function SubmitForm()
+		{
+			dhtmlEditorPrepareSubmit();//Fetching all the content from the editors to the Textarteas automaticaly
+			//myForm.submit();//Then we can sumbit the form
+			
+			//Debug:
+			alert("Content of hidden Textarea 1:\n"+document.myForm.myTextareaName1.value);
+			alert("Content of hidden Textarea 2:\n"+document.myForm.myTextareaName2.value);
+			alert("Content of hidden Textarea 3:\n"+document.myForm.myTextareaName3.value);
+			
+			return true;
+		}
+//-->
+</SCRIPT>
+<input type="button" value="Post" onclick="SubmitForm()">	
+	
+</form>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

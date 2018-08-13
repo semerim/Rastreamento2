@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+	 // -->
+</SCRIPT>
+</head>
+<body>
+
+A Form with an automaticaly created (hidden) textarea and a visible editor<br>
+See this source for details<br>
+<br>
+<form name="myForm">
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	<!--
+		var myEditor		=	new dhtmlEditor;
+		myEditor.setHeight(200);
+		myEditor.setHtmlSource('<p>My initial Content</p>');
+		myEditor.make_andCreateTextarea('myTextareaName');
+		
+		// Descripton of make_andCreateTextarea()
+		// - you can create a dhtml editor and a hidden textare by calling make_andCreateTextarea
+		// - myTextareaName is & must a name of the hidden textarea which will automaticaly created by the editor
+		// - after successfully calling make_andCreateTextarea() you have full access to the hidden textarea - see <input type="button"...> for details
+
+	//-->
+	</SCRIPT>	
+<input type="button" value="Post" onclick="dhtmlEditorPrepareSubmit();alert(document.myForm.myTextareaName.value);/* document.myForm.submit();*/">	
+</form>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

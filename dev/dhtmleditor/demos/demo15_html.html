@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+		//Load Plugin Librarie(s)
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_styleclass.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/listbox_template.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_hr.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_html.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_remove_xmltags.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_menu_invisible.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_css.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/grid_small.js"></SCRIPT>');
+	 // -->
+</SCRIPT>
+</head>
+<body>
+
+HTML Mode<br>
+See this source for details<br>
+<br>
+<form name="myForm">
+
+	<textarea id="myTextareaID1" name="myTextareaName1" style="width:720px; height:200px"><p>Editor 1</p></textarea><br><br>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	<!--
+		//See demo1.html - demo14.html for details and description of each functionality
+		
+		var myEditor1		=	new dhtmlEditor;
+
+		
+		myEditor1.registerApiModul(MODUL__behaviorLoadCSS('',"body {background-color: pink;}\n"));	
+		myEditor1.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+		myEditor1.make_andReplaceTextarea('myTextareaID1');
+				
+		document.write('<br>');
+		
+
+	//-->
+	</SCRIPT>	
+
+	<br>
+	<input id="b1" value="TEXT" type="button" onclick="MODUL__dhtmlEditor_html__switch_2_text(myEditor1);	     /* */ this.disabled=true;document.getElementById('b2').disabled=false;document.getElementById('b5').disabled=false;document.getElementById('b6').disabled=false;">
+	<input id="b2" disabled value="HTML" type="button" onclick="MODUL__dhtmlEditor_html__switch_2_html(myEditor1);		/* */	this.disabled=true;document.getElementById('b1').disabled=false;document.getElementById('b5').disabled=true;document.getElementById('b6').disabled=true;">
+	<input id="b3" value="getMode" type="button" onclick="alert(MODUL__dhtmlEditor_html__getMode(myEditor1))">
+	<input id="b4" value="getText" type="button" onclick="alert(MODUL__dhtmlEditor_html__get_from_text(myEditor1))">
+	<input id="b5" disabled value="set 123" type="button" onclick="(MODUL__dhtmlEditor_html__paste_2_text(myEditor1,'123'))">
+	<input id="b6" disabled value="set 456" type="button" onclick="(MODUL__dhtmlEditor_html__paste_2_text(myEditor1,'456'))">
+
+
+
+	<br>
+	
+	
+	
+<br><hr><br>
+
+</form>
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!--
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script>
+
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

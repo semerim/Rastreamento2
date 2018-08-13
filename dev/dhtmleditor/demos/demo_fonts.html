@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+
+		// where is the location of the home of the main script
+		// NOTE: default = "dhtmleditor/" if not set
+		// NOTE: MUST have a leading slash
+		// NOTE: can be relative, absolut or global
+
+		//document.dhtmlEditors_home='/dhtmleditor/';						//absolut
+		//document.dhtmlEditors_home='http://localhost/dhtmleditor/';		//global
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/behavior_css.js"></SCRIPT>');
+		document.writeln('<SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'modules/button_html.js"></SCRIPT>');
+
+
+	 // -->
+</SCRIPT>
+</head>
+<body>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">if (!window.dhtmlEditor) alert('Failed to load dhtml librarays for the DHTML Editor '+document.dhtmlEditors_home+'js/lib.js' );</SCRIPT>
+
+
+Cutsomize FontBox (Example 1)<br>
+See this source for details<br><br>
+
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	// OK - after the dhtml Javascript lib is loaded we can create a dhtml editor by following peace of code
+	var myEditor	=	new dhtmlEditor;
+
+	//Setting font faces (currently works only with IE)
+	myEditor.overideDefaultFontFaces('Tahoma','Tahoma');
+	myEditor.overideDefaultFontFaces('Verdana','Verdana');
+
+	//Setting font sizes (currently works only with IE)
+	myEditor.overideDefaultFontSizes('2','2');
+	myEditor.overideDefaultFontSizes('4','4');
+
+	
+	//Setting default Editor Font via CSS
+	//Registering the "CSS" Plugin to the Editor Object (included in behavior_css.js)
+	//This plugin enable you to set css definition to the editor
+	//NOTE: This css definition will ONLY available in the Editor and will not exported via getHtmlsource()
+	myEditor.registerApiModul(MODUL__behaviorLoadCSS(
+		'',// here you can set a url from a stylesheet Document i.e: http://localhost/mystylesheets.css NOTE: the url must global (http://domain.tl/foo.css) otherwise the Editor(ActiveX Control) will ignore the url - If the url empty it will ignore also
+		"body 			{font-size: 10pt; font-family: Tahoma}\n" 			//here you can set (additional to the url) valid css definitions (without the <style></style> Tags!)
+		// +".smallgreen 	{font-size: 10px;   color:green;}\n"
+		// +".mediumred 	{font-size: 24px;  color:red;}\n"
+		// +".bigblue 		{font-size: 36px;  color:blue;}\n"
+		// +".default		{font-size: 16px;  color:black;}\n"
+
+	));	
+	
+
+	//This will enable the user to view/edit the HTML Source of the content from the Editor 
+	myEditor.registerApiModul(MODUL__toggleEditModeGetApiInfoArray('../images/newdoc.gif'));//the url of the image of the button
+
+	myEditor.make();
+//-->
+</SCRIPT>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

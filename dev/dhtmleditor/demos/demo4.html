@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title></title>
+<SCRIPT TYPE="text/javascript" language="JavaScript1.3">
+	<!-- !!!! important comment this !!!!
+
+		// where is the location of the home of the main script
+		// NOTE: default = "dhtmleditor/" if not set
+		// NOTE: MUST have a leading slash
+		// NOTE: can be relative, absolut or global
+
+		//document.dhtmlEditors_home='/dhtmleditor/';						//absolut
+		//document.dhtmlEditors_home='http://localhost/dhtmleditor/';		//global
+		document.dhtmlEditors_home='../';									//relative
+		document.writeln('<'+'SCRIPT LANGUAGE="JavaScript" src="'+document.dhtmlEditors_home+'js/lib.js">'+'<'+'/SCRIPT'+'>');
+
+	 // -->
+</SCRIPT>
+</head>
+<body>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">if (!window.dhtmlEditor) alert('Failed to load dhtml librarays for the DHTML Editor '+document.dhtmlEditors_home+'js/lib.js' );</SCRIPT>
+
+
+Simple Customise the the Editor<br>
+See this source for details<br>
+<br>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+	// OK - after the dhtml Javascript lib is loaded we can create a dhtml editor by following peace of code
+	var myEditor	=	new dhtmlEditor;
+
+	//Setting initial Content
+	myEditor.setHtmlSource('<h3>My Headline</h3><font face="Arial" color="red">My Content</font><br><br><table border="0" bgcolor="green"><tr><td>My Table</td><td>My Table</td></tr><tr><td>My Table</td><td>My Table</td></tr></table>');//Do not set  <html> <head> <title> <body> !!!
+	
+	//Setting witdh & height  - defaults = 600x400 pixel
+	myEditor.setWidth(650);		//in pixel
+	myEditor.setHeight(170);	//in pixel
+	
+	// disable some Menu elements
+	// see js/dhtmled.js for possible values
+	myEditor.disableButton(DECMD_SETFONTNAME);
+	myEditor.disableButton(DECMD_SETFONTSIZE);
+	myEditor.disableButton(DECMD_DELETE);
+	//myEditor.disableButton(DECMD_BOLD);
+	myEditor.disableButton(DECMD_ITALIC);
+	myEditor.disableButton(DECMD_UNDERLINE);
+	//myEditor.disableButton(DECMD_SETFORECOLOR);
+	myEditor.disableButton(DECMD_SETBACKCOLOR);
+	//myEditor.disableButton(DECMD_JUSTIFYLEFT);
+	myEditor.disableButton(DECMD_JUSTIFYCENTER);
+	myEditor.disableButton(DECMD_JUSTIFYRIGHT);
+	//myEditor.disableButton(DECMD_ORDERLIST);
+	//myEditor.disableButton(DECMD_UNORDERLIST);
+	//myEditor.disableButton(DECMD_OUTDENT);
+	//myEditor.disableButton(DECMD_INDENT);
+	myEditor.disableButton(DECMD_VISIBLEBORDERS__);
+	//myEditor.disableButton(DECMD_SHOWDETAILS__);
+	myEditor.disableButton(DECMD_SNAPTOGRID__);
+	//myEditor.disableButton(DECMD_PROPERTIES);
+	myEditor.disableButton(DECMD_CUT);
+	//myEditor.disableButton(DECMD_COPY);
+	myEditor.disableButton(DECMD_PASTE);
+	//myEditor.disableButton(DECMD_FINDTEXT);
+	//myEditor.disableButton(DECMD_UNDO);
+	//myEditor.disableButton(DECMD_REDO);
+	//myEditor.disableButton(DECMD_INSERTTABLE);
+	//myEditor.disableButton(DECMD_INSERTROW);
+	//myEditor.disableButton(DECMD_DELETEROWS);
+	//myEditor.disableButton(DECMD_INSERTCOL);
+	//myEditor.disableButton(DECMD_DELETECOLS);
+	//myEditor.disableButton(DECMD_INSERTCELL);
+	//myEditor.disableButton(DECMD_DELETECELLS);
+	//myEditor.disableButton(DECMD_MERGECELLS);
+	//myEditor.disableButton(DECMD_SPLITCELL);
+	//myEditor.disableButton(DECMD_HYPERLINK);
+	myEditor.disableButton(DECMD_MAKE_ABSOLUTE);
+	myEditor.disableButton(DECMD_LOCK_ELEMENT);
+	myEditor.disableButton(DECMD_BRING_TO_FRONT);
+	myEditor.disableButton(DECMD_SEND_TO_BACK);
+	myEditor.disableButton(DECMD_BRING_FORWARD);
+	myEditor.disableButton(DECMD_SEND_BACKWARD);
+	myEditor.disableButton(DECMD_BRING_ABOVE_TEXT);
+	myEditor.disableButton(DECMD_SEND_BELOW_TEXT);
+
+
+	myEditor.make();
+//-->
+</SCRIPT>
+
+<!-- BUYNOW -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/p.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+
+<!-- Adds -->
+<script TYPE="text/javascript" LANGUAGE="JavaScript">
+	<!-- 
+	document.writeln('<script TYPE="text/javascript" LANGUAGE="JavaScript" SRC="http://www.p42.net/d.js?f='+Math.random()+'"></script>');
+	// -->
+</script> 
+
+</body>
+</html>

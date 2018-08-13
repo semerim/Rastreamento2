@@ -1,0 +1,171 @@
+*** ENGLISH
+
+NAME:
+
+    PHP upload
+
+VERSION: 1.2
+
+AUTHORS:
+    
+    Mauro De Giorgi <mauro@ondadiluce.com>
+
+SYSTEM REQUREMENT:
+
+PHP 4.1+
+GDlib (fot the thumbnails - optional)
+
+DESCRIPTION:
+
+
+To use the class you must include de file upload.class.php in your PHP file.
+
+The use is very simple:
+
+Create a FORM with a FILE field: set the form method="post" and enctype="multipart/form-data".
+In the example_en.php provided there is a field <input name="send" type="hidden" value="ok">:
+this is to check if the form as been send and so use the Upload object.
+
+The upload object must be create with this parameters:
+
+$OBJECT_NAME = new upload( ARRAY_FILE_PERM, MAX_FIL, ARC_DIR );
+
+where
+		 
+OBJECT_NAME is the name of the object
+MAX_FIL   		= max size of file upload			default -> 300 Kbyte
+ARRAY_FILE_PERM 	= array with mime/type of files to upload	default -> jpg, png
+ARC_DIR  		= destination dir of the upload file		default -> currect dir
+
+When the object is create you can use the the PutFile method to upload the file:
+
+$FULL_PATH = $OBJECT_NAME -> putFile ("USERFILE");
+
+where
+
+USERFILE is the name of the FILE field of the FORM
+
+this method return the path to file of the file uploaded. 
+If the file name already exist the class put a random number before the file name.
+
+If you want to create a thumbnail of the file you can use the method miniatura
+
+$FULL_PATH = $OBJECT_NAME -> miniatura (FILENAME, THUMB_DIR, IMAGE_WIDTH, IMAGE_HEIGHT, PRE_NAME);
+
+where
+
+FILENAME 	= path to image to resize
+THUMB_DIR	= destination dir of the thumbnails
+IMAGE_WIDTH  	= thumbnails witdh  			default -> 80 pixel
+IMAGE_HEIGHT  	= thumbnails height 			default -> 80 pixel
+PRE_NAME   	= pre file string for thumbs		default -> "thumb_"
+
+this method return the path to thumbnail just created. 
+
+The splitFilePath method allow you to split the string returned from putFile and miniatura method,
+in filename and relative path to file.
+The format is:
+
+$ARRAY = $OBJECT_NAME -> splitFilePath ( FULL_PATH );
+
+where
+
+FULL_PATH	= full path to a file
+
+return an associative array where:
+
+$ARRAY [filename] 	= file name with extension
+$ARRAY [path] 		= path to file
+
+
+COPYRIGHT:
+    
+    see COPYING file
+    
+
+
+*** ITALIANO
+
+
+NOME:
+
+    PHP upload
+
+VERSIONE: 1.2
+
+AUTORE:
+    
+    Mauro De Giorgi <mauro@ondadiluce.com>
+
+
+SYSTEM REQUREMENT:
+
+PHP 4.1 o superire
+GDlib (per le miniature - opzionale)
+
+DESCRIZIONE:
+
+
+Per usare questa classe dovete includere il file upload.class.php nella pagina php che userete.
+
+L'uso e' molto semplice:
+
+Create una FORM con un campo FILE : settate la form con method="post" e enctype="multipart/form-data".
+nel file example_it.php c'e' anche un campo <input name="send" type="hidden" value="ok">:
+questo campo serve per accorgersi se il form e' stato spedito oppure no.
+
+Per fare l'upload di un file dovete innanzitutto creare un oggetto con questi parametri:
+
+$OBJECT_NAME = new upload( ARRAY_FILE_PERM, MAX_FIL, ARC_DIR );
+
+dove
+		 
+OBJECT_NAME e' il nome dell'oggetto
+MAX_FIL   		= la dimensione massima dei file ca caricare 	default -> 300 Kbyte
+ARRAY_FILE_PERM 	= array con i mime/type dei i file da caricare		default -> jpg, png
+ARC_DIR  		= la directory di destinazione dei file			default -> currect dir
+
+Quando l'oggetto e' stato creato, potete usare il metodo putFile per fare l'upload di un file:
+
+$FULL_PATH = $OBJECT_NAME -> putFile ("USERFILE");
+
+dove
+
+USERFILE e' il nome del campo FILE nel form che avete creato prima FORM
+
+questo metodo ritorna in output il percorso completo verso il file appena caricato. 
+Se un file con questo nome esiste gia', la classe aggiunge un numero casuale al nome del file.
+
+Se volete creare una miniatura per un'immagine potete usare il metodo miniatura
+
+$FULL_PATH = $OBJECT_NAME -> miniatura (FILENAME, THUMB_DIR, IMAGE_WIDTH, IMAGE_HEIGHT, PRE_NAME);
+
+dove
+
+FILENAME 	= percorso verso l'immagine dalla quale creare la miniatura
+THUMB_DIR	= percorso della cartella di destinazione delle miniature
+IMAGE_WIDTH  	= larghezza (in pixel) della miniatura				default -> 80 pixel
+IMAGE_HEIGHT  	= altezza (in pixel) della miniatura				default -> 80 pixel
+PRE_NAME   	= stringa da anteporre al nome del file				default -> "thumb_"
+
+Il metodo ritorna il percorso completo verso la miniatura. 
+
+Il metodo splitFilePath permette di estrarre il nome del file (+ estensione) dal persorso completo 
+restituito dai metodi miniatura e putFile. Il formato è il seguente:
+
+$ARRAY = $OBJECT_NAME -> splitFilePath ( FULL_PATH );
+
+dove
+
+FULL_PATH	= percorso completo verso un file
+
+restituisce un array associativo di questo tipo:
+
+$ARRAY [filename] 	= il nome del file completo di estensione
+$ARRAY [path] 		= il percorso relativo verso il file 
+
+
+COPYRIGHT:
+    
+    vedere il file COPYING
+  

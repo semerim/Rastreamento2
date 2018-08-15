@@ -8,8 +8,8 @@ define("PAG_ERRO_ACESSO", "erro_acesso.php");
 
 require_once('consultas.php');
 
-require_once ('jpgraph/jpgraph.php');
-require_once ('jpgraph/jpgraph_bar.php');
+// require_once ('jpgraph/jpgraph.php');
+// require_once ('jpgraph/jpgraph_bar.php');
 
 
 // classes
@@ -2841,8 +2841,14 @@ if ($nroRegistros > 0) {
 		$cpu = $arrRet["cpu"];
 		$cpu_script = $arrRet["cpu_script"];
 			
+			
+		$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' uptime';
+		// dumpVar($comando);
+		$ret = shell_exec($comando);
+		$uptime = trim (pedaco (pedaco ($ret, "up", 2), ",", 1));
+
 		$retServidor =  "<BR>";
-		$retServidor .= msgBanner ("SERVIDOR: $nome_servidor ($ip)", $class_header_top, "center", "800");
+		$retServidor .= msgBanner ("$nome_servidor  - $ip (UPTIME: $uptime)", $class_header_top, "center", "800");
 		
 		$arrMostrados = array();
 
@@ -3049,5 +3055,3 @@ return $retGeral;
 // ---------------------------------------------------------------------------------------
 
 ?>
-
-

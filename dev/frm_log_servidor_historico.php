@@ -11,7 +11,7 @@ require_once(RAIZ_INC . 'inc_rastreamento.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 
-verifyLogin (0);
+// verifyLogin (0);
 
 ?>
 
@@ -51,6 +51,18 @@ $arrStats = array (	array ("0", "1 hora"),
 						
 define ("SEL_STATS", montaSelect ($arrStats, "grava_STATS", "COMBO", "0", $edicao, $novo, " onchange='mostraGrafico()'"));
 
+$arrMetricas = array (	array ("0", "Temperatura"),
+					array ("1", "CPU Load"),
+					array ("2", "Memória - Livre"),
+					array ("3", "Disco 1 - Livre"),
+					array ("4", "Disco 2 - Livre"),
+					array ("5", "Disco 3 - Livre"),
+					array ("6", "Disco 4 - Livre"),
+					array ("7", "Disco 5 - Livre")
+					);
+						
+define ("SEL_METRICA", montaSelect ($arrMetricas, "grava_METRICA", "COMBO", "0", $edicao, $novo, " onchange='mostraGrafico()'"));
+
 ?>
 
 <script language="JavaScript" type="text/JavaScript">
@@ -76,11 +88,14 @@ function processa_onLoad () {
 function mostraGrafico () {
 
 var frm = document.forms[0];
+var selMetrica = frm.grava_METRICA;
+var codMetrica = selMetrica.options[selMetrica.selectedIndex].value;
 var selStat = frm.grava_STATS;
-var codStat = selStat.options[selStat.selectedIndex].value
+var codStat = selStat.options[selStat.selectedIndex].value;
 var selServidor = frm.grava_COD_SERVIDOR;
-var codServidor = selServidor.options[selServidor.selectedIndex].value
-var url = "grafico_historico_temperaturas.php?cod_servidor=" + codServidor + "&cod_stat=" + codStat;
+var codServidor = selServidor.options[selServidor.selectedIndex].value;
+
+var url = "grafico_historico.php?cod_metrica=" + codMetrica + "&cod_servidor=" + codServidor + "&cod_stat=" + codStat;
 // alert (url);
 document.getElementById('layerStat').src = url;
 
@@ -96,15 +111,15 @@ document.getElementById('layerStat').src = url;
 <form name="dummy1">
 <table width="100%" height="8%"  border="0" valign='middle' align="center" bordercolor="#CCCCCC">
   <tr align="center" valign="top" bgcolor="#D7ECFF" class="tabela2Fixo">
-    <td height="100%" colspan="8" class="cabec_tabela1">SELECIONE O SERVIDOR E O INTERVALO PARA EXIBIÇÃO DO GRÁFICO</td>
+    <td height="100%" colspan="8" class="cabec_tabela1">SELECIONE A MÉTRICA, O SERVIDOR E O INTERVALO PARA EXIBIÇÃO DO GRÁFICO</td>
   </tr>
   <tr>
     <td width=50% align="center" valign="middle" class="tabela1" colspan="8">
-    	 <?php echo SEL_SERVIDOR . " - " . SEL_STATS ?>
+    	 <?php echo SEL_METRICA . " - " . SEL_SERVIDOR . " - " . SEL_STATS ?>
     </td>
   </tr>
 </table>
 </form>
-<iframe src='' id='layerStat' name="layerStat" align="center" width="100%" height="400" scrolling="no" frameborder="0" style="border:0px"></iframe>
+<iframe src='' id='layerStat' name="layerStat" align="center" width="100%" height="700" scrolling="no" frameborder="0" style="border:0px"></iframe>
 </body>
 </html>

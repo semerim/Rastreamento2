@@ -21,10 +21,14 @@ require_once(RAIZ_INC . 'inc_rastreamento.php');
    font-family: tahoma, verdana, arial, sans-serif;
    font-size: 8pt;
    font-weight: bold;
-   padding: 0px;
+   padding: 1px;
    background-color: <?php echo RASTREIO_CORBOTAO ?>;
    color: #666666;
    text-decoration: none;
+   cursor: pointer; /* hand-shaped cursor */
+   cursor: hand; /* for IE 5.x */
+   border-radius: 6px;
+   margin: 2px 2px;
 }
 .linkbotao:link,
 .linkbotao:visited {

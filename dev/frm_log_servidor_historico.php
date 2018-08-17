@@ -116,6 +116,7 @@ document.getElementById('layerStat').src = url;
   <tr>
     <td width=50% align="center" valign="middle" class="tabela1" colspan="8">
     	 <?php echo SEL_METRICA . " - " . SEL_SERVIDOR . " - " . SEL_STATS ?>
+		 <span id="layerbtnGeraGrafico"><input name="btnGeraGrafico" type="button" class="bot" value="Gera Gráfico" onclick='mostraGrafico()'></span>
     </td>
   </tr>
 </table>

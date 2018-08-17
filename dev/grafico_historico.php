@@ -26,14 +26,14 @@ if (($cod_metrica == "") or ($cod_servidor == ""))
 $row1 = simpleSelectPDO("select nome_servidor from servidor where seq = $cod_servidor");
 $nome_servidor = $row1[0];
 
-$arrMetricas = array (	array ("0", "Temperatura", "temp", "o."),
-					array ("1", "CPU - Load", "cpu_load", "%"),
-					array ("2", "Mem?ria - Livre", "mem_free", "MB"),
-					array ("3", "Disco 1 - Livre", "disk1_free", "GB"),
-					array ("4", "Disco 2 - Livre", "disk2_free", "GB"),
-					array ("5", "Disco 3 - Livre", "disk3_free", "GB"),
-					array ("6", "Disco 4 - Livre", "disk4_free", "GB"),
-					array ("7", "Disco 5 - Livre", "disk5_free", "GB")
+$arrMetricas = array (	array ("0", "Temperatura", "temp", "o.", "red", "yellow"),
+					array ("1", "CPU - Load", "cpu_load", "%", "red", "yellow"),
+					array ("2", "Mem?ria - Livre", "mem_free", "MB", "red", "yellow"),
+					array ("3", "Disco 1 - Livre", "disk1_free", "GB", "blue", "red"),
+					array ("4", "Disco 2 - Livre", "disk2_free", "GB", "blue", "red"),
+					array ("5", "Disco 3 - Livre", "disk3_free", "GB", "blue", "red"),
+					array ("6", "Disco 4 - Livre", "disk4_free", "GB", "blue", "red"),
+					array ("7", "Disco 5 - Livre", "disk5_free", "GB", "blue", "red")
 					);
 
 foreach ($arrMetricas as $metrica) {
@@ -41,6 +41,8 @@ foreach ($arrMetricas as $metrica) {
 		$campo = $metrica[2];
 		$titulo = $metrica[1];
 		$sufixo = $metrica[3];
+		$cor1 = $metrica[4];
+		$cor2 = $metrica[5];
 	}
 }
 					
@@ -152,7 +154,7 @@ $p1=new LinePlot($ydata);
 
 $p1->SetColor("blue");
 $p1->SetWeight(0);
-$p1->SetFillGradient('red','yellow');
+$p1->SetFillGradient($cor1, $cor2);
  
 // $p1->SetFillColor("lightblue");
 

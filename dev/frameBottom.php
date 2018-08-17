@@ -36,7 +36,7 @@ function autoRefresh() {
 <body class="rosto1" onload="javascript:autoRefresh();" text="#000000" bgcolor=#7DD376 bgcolor1=#399A31 bgcolor1="#0060A0" leftmargin=0 topmargin=0 link="#FFFFFF" alink="#FFFFFF" vlink="#FFFFFF">
 <table width="100%" height="30" border="0" cellspacing="0" cellpadding="0">
 	<tr valign="middle">
-		<td width="27%" class="bottom" valign="middle">
+		<td width="18%" class="bottom" valign="middle">
 			&nbsp;&nbsp;&nbsp;&nbsp
 			<b>
 				<a href="loginStatus.php" target=mainFrame class="link1">
@@ -47,23 +47,27 @@ function autoRefresh() {
 				</a>
 			</b>
 		</td>
-		<td width="45%" class="bottom" valign="middle">
+		<td width="68%" class="bottom" valign="middle">
 			<center>
 			<A target=mainFrame HREF='sqlrun.php'>SQL RUN</A>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<A target=mainFrame HREF='rastreamentodb.php'>PAINEL</A>
+			<A target=mainFrame HREF='rastreamentodb.php'>OBJETOS</A>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A target=mainFrame HREF='monitor.php'>MONITOR</A>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A target=mainFrame HREF='frm_log_servidor_historico.php'>GRÁFICOS</A>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</center>
 		</td>
-		<td width="5%" class="bottom" valign="middle" align="right">
+		<td width="2%" class="bottom" valign="middle" align="middle">
 			<a href="javascript:atualiza();" class="link0">...</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
-		<td width="10%" class="bottom" valign="middle" align="left">
+		<td width="7%" class="bottom" valign="middle" align="left">
 			<span id="activity" align="right"></span>
 			<span id="login" align="right"></span>
 		</td>
-		<td width="13%" class="bottom" valign="middle">
+		<td width="5%" class="bottom" valign="middle">
 			<div align="right">
 				<a href="logout.php" target=_top>Sair</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

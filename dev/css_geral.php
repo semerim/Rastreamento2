@@ -346,11 +346,15 @@ a
 		font-family: tahoma, verdana, arial, sans-serif;
 		font-size: 11px;
 		font-weight: bold;
-		padding: 0px;
+		padding: 1px;
 		background-color: <?php echo $botao_form ?>;;
 		color1: black;
 		color: #666666;
 		text-decoration: none;
+		cursor: pointer; /* hand-shaped cursor */
+		cursor: hand; /* for IE 5.x */
+		border-radius: 6px;
+		margin: 2px 2px;
 	}
 .bot:link,
 .bot:hover 

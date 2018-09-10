@@ -7,8 +7,8 @@ session_start();
 
 require_once('globais.php');
 
-require_once(RAIZ_INC . 'conexao.php');
-require_once(RAIZ_INC . 'inc_rastreamento.php');
+require_once('conexao.php');
+require_once('inc_rastreamento.php');
 
 $cod_metrica = isset($_REQUEST["cod_metrica"]) ? $_REQUEST["cod_metrica"] : "";
 $cod_servidor = isset($_REQUEST["cod_servidor"]) ? $_REQUEST["cod_servidor"] : "";

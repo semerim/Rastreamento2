@@ -1,12 +1,54 @@
 <?php
 
+require_once('conexao.php');
+
 // constantes
+
+
+define("LOGIN_TIMEOUT", parametro("LOGIN_TIMEOUT"));	// tempo em minutos para forçar o login independente de atividade
+define("ACTIVITY_TIMEOUT", parametro("ACTIVITY_TIMEOUT"));	// tempo em minutos para forçar o login baseado na última atividade
+define("PAG_USR"  , parametro("PAG_USR"));
+define("PAG_LOGIN", parametro("PAG_LOGIN"));
+
+define("DEFAULT_TIMEZONE", parametro("DEFAULT_TIMEZONE"));
+
+define ("AMBIENTE", parametro("AMBIENTE"));
+define ("SCHEMA", parametro("SCHEMA"));
+
+define ("APP_ROOT", parametro("APP_ROOT"));
+define ("RAIZ", $_SERVER["DOCUMENT_ROOT"]. APP_ROOT . "/" . AMBIENTE . "/"); 
+define ("RAIZ_INC", RAIZ);
+
+define ("MAX_ROWS_PANEL", parametro("MAX_ROWS_PANEL"));
+define ("MAX_ROWS_LOV", parametro("MAX_ROWS_LOV"));
+define ("MAX_ROWS_VIEW", parametro("MAX_ROWS_VIEW"));
+define ("PARAM_TABELA_LOV", parametro("PARAM_TABELA_LOV"));
+define ("PARAM_TABELA_VIEW", parametro("PARAM_TABELA_VIEW"));
+define ("HOME", APP_ROOT . "/" . AMBIENTE . "/" . PAG_LOGIN);
+define ("HOMEDIR", APP_ROOT . "/" . AMBIENTE . "/");
+// define ("FORM_GERAL", "frm_geral");
+
+
+define("RASTREIO_CORCABEC", isset($_SESSION["rastreamento_cabec"]) ? $_SESSION["rastreamento_cabec"] : parametro("RASTREIO_CORCABEC"));
+define("RASTREIO_CORBOTAO", isset($_SESSION["rastreamento_botao"]) ? $_SESSION["rastreamento_botao"] : parametro("RASTREIO_CORBOTAO"));
+
+define ("GOOGLE_USER", parametro("GOOGLE_USER"));
+define ("GOOGLE_PASSWORD", parametro("GOOGLE_PASSWORD"));
+
+define ("TELEGRAM_RASTREAMENTO_BOT_TOKEN", parametro("TELEGRAM_RASTREAMENTO_BOT_TOKEN"));
+define ("TELEGRAM_ALERTAS_BOT_TOKEN", parametro("TELEGRAM_ALERTAS_BOT_TOKEN"));
+define ("TELEGRAM_CHAT_ID", parametro("TELEGRAM_CHAT_ID"));
+
 
 define("HOMEPAGE"                 , "rosto.php");
 
 define("PAG_ERRO_ACESSO", "erro_acesso.php");
 
 require_once('consultas.php');
+require_once('PHPMailer/PHPMailer.php');
+require_once('PHPMailer/SMTP.php');
+require_once('PHPMailer/Exception.php');
+
 
 // require_once ('jpgraph/jpgraph.php');
 // require_once ('jpgraph/jpgraph_bar.php');
@@ -142,11 +184,15 @@ class Rastrear
     {
         # verificacoes simples para validar o codigo. Adicione 
         # outros metodos a seu gosto 
+		dumpVar('1');
+
         if(!self::$inicializado)
             return self::erro( "Primeiro acesse o metodo Rastrear::init() com os devidos parametros." );
 
         if( is_null( $__codigo__ ) )
             return self::erro( "Nenhum código de rastreamento recebido." );
+
+		dumpVar('2');
 
         if( ! self::soapExists() )
             return self::erro( "Parece que o Modulo SOAP não esta ativo em seu servidor." );
@@ -160,8 +206,14 @@ class Rastrear
             'objetos'   => trim($__codigo__)
         );
 
+		dumpVar('3');
+
         $client = new SoapClient( self::$wsdl );
+		dumpVar('4');
+		
         $eventos = $client->buscaEventos( $_evento );
+
+		dumpVar('5');
 
         // sempre retorna objeto por padrao, mesmo em caso de erros.
         return ($eventos->return->qtd == 1) ? 
@@ -228,7 +280,9 @@ if( is_object($obj->evento) ):
     $obj->evento = $tmp;
 endif;
 # percorrendo os eventos ocorridos com o objeto
+$i = 1;
 foreach( $obj -> evento as $ev ):
+	echo "<br>EVENTO NRO $i <BR>";
     echo "TIPO: "   . $ev -> tipo   . "<br>" ;
     echo "STATUS: " . $ev -> status . "<br>" ;
     echo "DATA: "   . $ev -> data   . "<br>" ;
@@ -248,6 +302,7 @@ foreach( $obj -> evento as $ev ):
         echo " DESTINO (UF): "     . $ev -> destino -> uf . "<br>" ;
     endif;
     echo "<hr>";
+	$i++;
 endforeach;
 	
 	
@@ -275,7 +330,7 @@ endforeach;
  * @return [html table] - retorna tabela formatada 
  * com os dados
  */
-function rastreioObjParse( $objetos = null )
+function rastreioObjParse( $objetos = null, $retornarPaginaInteira = false )
 {
     $post = [
         'P_LINGUA' => '001',
@@ -286,25 +341,49 @@ function rastreioObjParse( $objetos = null )
     $config = [
         'useragent'   => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
         'cookie_file' => dirname(__FILE__).'/cookies/'.md5($_SERVER['REMOTE_ADDR']).'.txt',
-        'referer'     => 'http://www2.correios.com.br/sistemas/rastreamento/resultado.cfm?',
-        'url'         => 'http://www2.correios.com.br/sistemas/rastreamento/resultado.cfm?'
+        'referer'     => 'https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm?',
+        'url'         => 'https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm?'
     ];
 
     $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, $config['url'] );
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt( $ch, CURLOPT_ENCODING, 'ISO-8859-1' ); 
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query($post) );
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-    curl_setopt( $ch, CURLOPT_USERAGENT, $config['useragent'] );
-    curl_setopt( $ch, CURLOPT_REFERER, $config['referer'] );
-    curl_setopt( $ch, CURLOPT_COOKIEFILE, $config['cookie_file'] );
-    curl_setopt( $ch, CURLOPT_COOKIEJAR, $config['cookie_file'] );
+	$headers = array( 
+                 "Cache-Control: no-cache", 
+                ); 
+	curl_setopt ($ch, CURLOPT_HTTPHEADER, $headers);
+	//Tell cURL that it should only spend 10 seconds
+	//trying to connect to the URL in question.
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+ 
+	//A given cURL operation should only take
+	//30 seconds max.
+	curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+	
+    curl_setopt ($ch, CURLOPT_URL, $config['url'] );
+    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt ($ch, CURLOPT_ENCODING, 'ISO-8859-1' ); 
+    curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($post) );
+    curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false );
+    curl_setopt ($ch, CURLOPT_USERAGENT, $config['useragent'] );
+    curl_setopt ($ch, CURLOPT_REFERER, $config['referer'] );
+    curl_setopt ($ch, CURLOPT_COOKIEFILE, $config['cookie_file'] );
+    curl_setopt ($ch, CURLOPT_COOKIEJAR, $config['cookie_file'] );
 	curl_setopt ($ch, CURLOPT_FAILONERROR, true);
+	curl_setopt ($ch, CURLOPT_FRESH_CONNECT, 1); // don't use a cached version of the url
 	// curl_setopt( $ch, CURLOPT_HTTPHEADER, 'Content-Type: text/html; charset=iso-8859-1';
 
     // @string - codigo html
     $resposta = curl_exec($ch);
+	curl_close($ch);
+	
+	if ($retornarPaginaInteira == true)
+		return $resposta;
+
+
+	if ($resposta == "") {
+		// echo 'ERRO 0';
+		return 'Pacote não localizado - ERRO 0';
+	}
+	
 	$tableResposta = array();
 
 	
@@ -312,14 +391,14 @@ function rastreioObjParse( $objetos = null )
 
 	if (is_array($resposta)) {
 		// echo 'ERRO 1';
-		return '';
+		return 'Pacote não localizado - ERRO 1';
 	}
 	
 	// echo "Resposta: " . $resposta;
 	
 	if ($resposta === '') {
 		// echo 'ERRO 2';
-		return '';
+		return 'Pacote não localizado - ERRO 2';
 	}
 	
     $htmldoc = new DOMDocument();
@@ -336,7 +415,10 @@ function rastreioObjParse( $objetos = null )
 	$tables = $htmldoc->getElementsByTagName('table');
 	if ($tables->length == 0) {
 		// echo 'ERRO 3';
-		return "";
+		if (strpos($resposta, "O nosso sistema") != false)
+			return "Pacote não localizado";
+		else
+			return "Pacote não localizado - ERRO 3";
 	}
  
 	//get all rows from the table
@@ -352,6 +434,8 @@ function rastreioObjParse( $objetos = null )
 	$table = array();
 	//get all rows from the table
 	$rows = $tables->item(0)->getElementsByTagName('tr');
+	// dumpVar(count($rows[0]));
+	// dumpVar($rows);
 	foreach ($rows as $row)
 {
 		// get each column by tag name
@@ -368,7 +452,9 @@ function rastreioObjParse( $objetos = null )
 			$nodo = utf8_decode($nodo);
 			$nodo = str_replace('Acesse o ambiente Minhas Importações', '', $nodo);
 			$nodo = trim ($nodo);
-// 			echo "{" . $nodo . "}\n";
+ 			// echo "{" . $nodo . "}\n";
+			if (strpos($nodo, "COM ERRO") != false)
+				return "Página de consulta dos Correios com ERRO";
 			
 			if ($i == 0) {
 				// primeira célula, separa data+hora e local
@@ -577,6 +663,168 @@ $gerou = true;
 
 return $gerou;
 
+}
+
+
+// ---------------------------------------------------------------------------------------
+
+function geraHTMLPacote($rastreio, $paramNotifica = "0", $atualizaStatus = "0") {
+
+$ret = "";
+$retEmail = "";
+$msgTelegram = "";
+$notificar = "";
+$nomeObjeto = "";
+$montaURLs = "";
+	
+$arrEventos = rastreioObjParse($rastreio);
+// print_r($arrEventos);
+	
+if (!is_array($arrEventos)) {
+	$msgErro = $arrEventos;
+	$arrEventos = array(
+						array(	$msgErro,
+								'',
+								''));
+}
+
+$nroEvento = 0;
+foreach ($arrEventos as $evento) {
+
+	$strEvento = $evento[2];
+	
+	if ($nroEvento == 0) {
+		// primeiro evento - inicializa a tabela
+		$ret .= "<TABLE class='rastreio'>\n";
+		$retEmail .= "<TABLE border=1>\n";
+		
+		$ret .= "<TH class='cabec_rastreio' colspan=2>" . $rastreio . "</TH><TH></TH><TH></TH>\n";
+		$retEmail .= "<TH align=center colspan=2>" . $rastreio . "</TH>\n";
+		
+		// atualiza data e hora do ultimo evento encontrado
+		$dataHora = $evento[0] . ":00";
+		// dumpVar($dataHora);
+		
+		$msgTelegram = "<pre>" . $evento[0] . ($evento[1] !== '' ? " - " . $evento[1] : "") . "</pre>\n\n" . $strEvento;
+		
+		if (isDate($dataHora, 'd/m/Y H:i:s')) {
+			
+			$strAtualizaStatus = "";
+			
+			// busca ultima atualizacao 
+			$sqlUltAt = "SELECT date_format(dt_ult_atualizacao, '%d/%m/%Y %H:%i:%s') dt_ult_atualizacao, ult_status, nome, notificar, url1, url1_desc, url2, url2_desc, url3, url3_desc, url4, url4_desc, url5, url5_desc FROM objeto WHERE cod_rastreamento = '$rastreio'";
+			$arrUltAt = simpleSelectPDO($sqlUltAt);
+			$ultDataGravada = $arrUltAt[0];
+			$ultStatus = $arrUltAt[1];
+			$nomeObjeto = $arrUltAt[2];
+			$deveNotificar = $arrUltAt[3];
+			$url1 = $arrUltAt[4];
+			$url1_desc = $arrUltAt[5];
+			$url2 = $arrUltAt[6];
+			$url2_desc = $arrUltAt[7];
+			$url3 = $arrUltAt[8];
+			$url3_desc = $arrUltAt[9];
+			$url4 = $arrUltAt[10];
+			$url4_desc = $arrUltAt[11];
+			$url5 = $arrUltAt[12];
+			$url5_desc = $arrUltAt[13];
+			
+			if (isDate($ultDataGravada, 'd/m/Y H:i:s')) {
+
+				// dumpVar($ultDataGravada);
+				// dumpVar($dataHora);
+				
+				$format = "d/m/Y H:i:s";
+				$dt1 = DateTime::createFromFormat($format, $ultDataGravada);
+				$dt2 = DateTime::createFromFormat($format, $dataHora);
+				
+				// if (strtotime($ultDataGravada) < strtotime($dataHora)) {
+				if ($dt1 < $dt2) {
+					// atualiza status - notifica se necessário
+					$strAtualizaStatus = ", ult_status = '" . utf8_encode($strEvento) . "'";
+					// dumpVar($strAtualizaStatus);
+					if (($deveNotificar == "1") and ($paramNotifica == "1")) {
+						$notificar = "1";
+						// dumpVar("Notificando...");
+						if ($url1 != "") {
+							$montaURLs .= "<A HREF='$url1'>$url1_desc</A>";
+						}
+						if ($url2 != "") {
+							$montaURLs .= "<br><br><A HREF='$url2'>$url2_desc</A>";
+						}
+						if ($url3 != "") {
+							$montaURLs .= "<br><br><A HREF='$url3'>$url3_desc</A>";
+						}
+						if ($url4 != "") {
+							$montaURLs .= "<br><br><A HREF='$url4'>$url4_desc</A>";
+						}
+						if ($url5 != "") {
+							$montaURLs .= "<br><br><A HREF='$url5'>$url5_desc</A>";
+						}
+					}
+					else {
+						// dumpVar("N Notificando...");
+					}
+				}
+			}
+			
+			// $msgTelegram .= str_replace("<BR>", "\n", $montaURLs);
+			
+			$strDataHora = "str_to_date ('$dataHora', '%d/%m/%Y %H:%i:%s')";
+			$sqlUpdate = "UPDATE objeto SET dt_ult_atualizacao = $strDataHora $strAtualizaStatus WHERE cod_rastreamento = '$rastreio'";
+			// dumpVar($sqlUpdate);
+			if ($atualizaStatus == "1")
+				simpleSelectPDO($sqlUpdate);
+			
+		}
+	}
+				
+	$ret .= "<TR class='rastreio'><TD valign=middle width='25%' class='dataHoraCidade'>" . $evento[0];
+	$retEmail .= "<TR><TD width='30%'>" . $evento[0];
+	
+	if ($evento[1] !== '')  {
+		$ret .= " - " . $evento[1];
+		$retEmail .= " - " . $evento[1];
+	}
+	
+	$ret .= "</TD>\n";
+	$retEmail .= "</TD>\n";
+	
+	$strEvento = destacaEventoRastreamento($strEvento);
+	$ret .= "<TD valign=middle width='75%' class='evento'>" . $strEvento . "</TD>\n";
+	$retEmail .= "<TD width='70%'>" . $strEvento . "</TD>\n";
+
+	$ret .= "</TR>\n";
+	$retEmail .= "</TR>\n";
+
+	$nroEvento++;
+}
+	
+if ($nroEvento > 0) {
+	$ret .= "</TABLE>\n";
+	$retEmail .= "</TABLE>\n";
+}
+
+if ($notificar == "1") {
+	// mudou status - notificar por email e Telegram
+	
+	$sendTo = parametro("EMAIL_NOTIFICACAO_OBJETO");
+	$subject = parametro("SUBJECT_NOTIFICACAO_OBJETO");
+	$subject = str_replace("%objeto%", $rastreio, $subject) . " - " . $nomeObjeto;
+	
+	$nameFrom = parametro("NOME_NOTIFICACAO_OBJETO");
+		
+	$body = "<h3>" . $nomeObjeto . "</h3>$montaURLs<br><br>" . $retEmail;
+	
+	$retMail = sendMail ($sendTo, GOOGLE_USER, $nameFrom, $subject, $body, true);
+	// dumpVar($retMail);
+	
+	send_Telegram("\n<b>" . $subject . "</b>\n\n" . $msgTelegram, TELEGRAM_RASTREAMENTO_BOT_TOKEN);
+	
+}
+
+return $ret;
+	
 }
 
 
@@ -1338,7 +1586,7 @@ if ($edicao != "1") {
 	
 	// somente leitura - retorna o valor para visualização, e também um campo hidden para tratamento posterior
 	if ($novo == "1") {
-		$retorno =  "<input name='" . $campo . "' type='hidden' value='" . $valor . "'>";
+		$retorno =  "<input id='" . $campo . "' name='" . $campo . "' type='hidden' value='" . $valor . "'>";
 	}
 	if ($tipo == "color") {
 		$valor = mostraCor($valor);
@@ -1349,7 +1597,8 @@ if ($edicao != "1") {
 	$retorno .= "<span id = 'layer" . $campo . "' style='position:relative;'>" . $valor . "</span>";
 }
 else {
-	$retorno =  "<input id='$campo' name='" . $campo . "' type='" . $tipo . "' value='" . $valor . "' size='" . $tam . "'>";
+	// $retorno =  "<input id='$campo' name='" . $campo . "' type='" . $tipo . "' value='" . $valor . "' size='" . $tam . "'>";
+	$retorno =  "<input id='$campo' name='" . $campo . "' type='text' value='" . $valor . "' size='" . $tam . "'>";
 	if ($tipo == "date") {
 		// coloca o calendário
 		$retorno .= "<img style='vertical-align: middle;' src='img/date.gif' width=20 height=18 ";
@@ -2404,16 +2653,26 @@ return $valores;
 function destacaEventoRastreamento ($evento) {
 
 	$retorno = $evento;
-	$arrTrocas = array (array ("CAMPOS DOS GOYTACAZES / RJ", "<FONT COLOR=RED><B>", "</B></FONT>"),
-						array ("Campos Dos Goytacazes / RJ", "<FONT COLOR=RED><B>", "</B></FONT>"),
-						array ("Tentativa de entrega não efetuada Entrega prevista para o próximo dia útil", "<FONT COLOR='#CC6500'><B>", "</B></FONT>"),
-						array ("Objeto entregue ao destinatário", "<FONT COLOR='5F9F9F'><B>", "</B></FONT>"),
-						array ("Objeto saiu para entrega ao destinatário", "<FONT COLOR='#FF3333'><B>", "</B></FONT>"),
-						array ("Saiu para entrega", "<FONT COLOR='#FF3333'><B>", "</B></FONT>")
+	$arrTrocas = array (array ("CAMPOS DOS GOYTACAZES / RJ", "", "<FONT COLOR=RED><B>", "</B></FONT>"),
+						array ("Campos Dos Goytacazes / RJ", "", "<FONT COLOR=RED><B>", "</B></FONT>"),
+						array ("Objeto encaminhado de Unidade de Tratamento em CAJAMAR / SP para Unidade de Tratamento em SAO GONCALO / RJ", "", "<FONT COLOR='5F9F9F'><B>", "</B></FONT>"),
+						array ("Objeto encaminhado de Unidade de Tratamento em RIO DE JANEIRO / RJ para Unidade de Tratamento em SAO GONCALO / RJ", "", "<FONT COLOR='5F9F9F'><B>", "</B></FONT>"),
+						array ("Tentativa de entrega não efetuada Entrega prevista para o próximo dia útil", "", "<FONT COLOR='#CC6500'><B>", "</B></FONT>"),
+						array ("Aguardando pagamento Aguardando pagamento do despacho postal.", "Aguardando pagamento do despacho postal.", "<FONT COLOR='E66914'><B>" . imgHTML('money', '1', 3), imgHTML('money', '1', 3) . "</B></FONT>"),
+						array ("Objeto pago. Entrega em até 40 dias úteis.", "", "<FONT COLOR='278E10'><B>", "</B></FONT>"),
+						array ("Objeto entregue ao destinatário", "", "<FONT COLOR='1C16EF'><B>" . imgHTML('thumbsup', '1', 3), imgHTML('thumbsup', '1', 3) . "</B></FONT>"),
+						array ("Objeto saiu para entrega ao destinatário", "", "<FONT COLOR='#FF3333'><B>" . imgHTML('entrega', '1', 3), imgHTML('entrega', '1', 3) . "</B></FONT>"),
+						array ("Saiu para entrega", "", "<FONT COLOR='#FF3333'><B>" . imgHTML('entrega', '1', 3), imgHTML('entrega', '1', 3) . "</B></FONT>")
 						);
 
 	foreach ($arrTrocas as $troca) {
-		$retorno = str_replace ($troca[0], $troca[1] . $troca[0] . $troca[2], $retorno);
+		$textoOriginal = $troca[0];
+		$textoNovo = $troca[1];
+		$preTexto = $troca[2];
+		$posTexto = $troca[3];
+		
+		$texto = ($textoNovo == "" ? $textoOriginal : $textoNovo);
+		$retorno = str_replace ($textoOriginal, $preTexto . $texto . $posTexto, $retorno);
 	}
 	
 	return $retorno;
@@ -2421,6 +2680,27 @@ function destacaEventoRastreamento ($evento) {
 }
 
 // ---------------------------------------------------------------------------------------
+
+function imgHTML ($nome, $space = "1", $times = 1) {
+
+return "";
+
+$images = array ("money" => "img/money02.png",
+				 "thumbsup" => "img/thumbsup05.png",
+				 "entrega" => "img/entrega04.png");
+$retorno = "";
+
+for ($x = 0; $x < $times; $x++) {
+	$retorno .= ($space == "1" ? "&nbsp;" : "") . "<img src='" . $images[$nome] . "' valign='middle' width=17 height=17>" . ($space == "1" ? "&nbsp;" : "");
+} 
+
+return $retorno;
+	
+}
+
+
+// ---------------------------------------------------------------------------------------
+
 
 function nextValSeq ($tabela, $campoSeq) {
 // retorna proximo valor de sequencia para inclusão de registro em uma tabela
@@ -2572,7 +2852,7 @@ return $ret;
 // ---------------------------------------------------------------------------------------
 
 
-function msgTabela($msg, $align = "center", $class_header = " class='sel_header' ") {
+function msgTabela($msg, $align = "center", $class_header = " class=sel_header ") {
 
 // formata mensagem de retorno em tabela para exibição no HTML
 
@@ -2787,15 +3067,19 @@ return $ret;
 
 // ---------------------------------------------------------------------------------------
 
-function buscaStatServidor($seq_servidor, $todos = "0", $gravar = "1") {
+function buscaStatServidor($seq_servidor, $todos = "0", $gravar = "1", $notificar = "1", $somente_temperatura = "0") {
 
 // busca as estatísticas do servidor
 
 $ret = "";
 $retGeral = "";
+$arrTemperaturas = array();
 	
 $class_header_top = " class='sel_header_top_pad' ";
 $class_header = " class='sel_header_pad' ";
+
+$titulo = ($somente_temperatura == "1" ? "TEMPERATURAS DOS SERVIDORES" : "MONITORAMENTO DE SERVIDORES");
+$tamTitulo = ($somente_temperatura == "1" ? "400" : "800");
 
 global $_objDB;
 
@@ -2816,7 +3100,7 @@ $arrAssoc = $objData2->getData(DBData::ARRAY_ASSOC);
 $nroRegistros = count($arrNum);
 
 if ($nroRegistros > 0) {
-	$retGeral = msgBanner ("MONITORAMENTO DE SERVIDORES", " class='sel_header_top_pad' ", "center", "800");
+	$retGeral = msgBanner ($titulo, " class='sel_header_top_pad' ", "center", $tamTitulo);
 	$gravaAlgum = "0";
 
 	foreach ($arrAssoc as $arrRet) {
@@ -2832,17 +3116,32 @@ if ($nroRegistros > 0) {
 		$username = $arrRet["username"];
 		$password = $arrRet["password"];
 		$gravaLog = $arrRet["log"];
+		
 		$temperatura = $arrRet["temperatura"];
 		$temperatura_script = $arrRet["temperatura_script"];
+		$temperatura_notificar = $arrRet["temperatura_notificar"];
+		$temperatura_limite = $arrRet["temperatura_limite"];
+		$alerta_temperatura = parametro("ALERTA_TEMPERATURA");
+		
 		$espaco_disco = $arrRet["espaco_disco"];
 		$espaco_disco_script = $arrRet["espaco_disco_script"];
+		$espaco_disco_notificar = $arrRet["espaco_disco_notificar"];
+		$espaco_disco_limite = $arrRet["espaco_disco_limite"];
+		$alerta_disco = parametro("ALERTA_DISCO");
+		
 		$memoria = $arrRet["memoria"];
 		$memoria_script = $arrRet["memoria_script"];
+		$memoria_notificar = $arrRet["memoria_notificar"];
+		$memoria_limite = $arrRet["memoria_limite"];
+		$alerta_memoria = parametro("ALERTA_MEMORIA");
+		
 		$cpu = $arrRet["cpu"];
 		$cpu_script = $arrRet["cpu_script"];
+		$cpu_notificar = $arrRet["cpu_notificar"];
+		$cpu_limite = $arrRet["cpu_limite"];
+		$alerta_cpu = parametro("ALERTA_CPU");
 			
-			
-		$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' uptime';
+		$comando = 'timeout 1 sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' uptime';
 		// dumpVar($comando);
 		$ret = shell_exec($comando);
 		$uptime = trim (pedaco (pedaco ($ret, "up", 2), ",", 1));
@@ -2853,7 +3152,7 @@ if ($nroRegistros > 0) {
 		$arrMostrados = array();
 
 		if ($temperatura == "1") {
-			$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $temperatura_script;
+			$comando = 'timeout 1 sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $temperatura_script;
 			// dumpVar($comando);
 			$ret = shell_exec($comando);
 			// dumpVar($ret);
@@ -2862,7 +3161,32 @@ if ($nroRegistros > 0) {
 			// $retServidor = msgBanner ("Temperatura: " . $temp_atual . "°C", $class_header, "center", "400");
 			$retDetalhe = "<center><h2>Temperatura: " . $temp_atual . "°C</h2></center>";
 			
-			$arrMostrados[] = $retDetalhe;
+			$assuntoNotificar = "";
+			$textoNotificar = "";
+			$msgTelegram = "";
+			$warning = "";
+			
+			if (((int)$temp_atual) >= ((int)$temperatura_limite)) {
+				if ($temperatura_notificar == "1") {
+					$assuntoNotificar = "ALERTA - Temperatura - " . $nome_servidor . " (" . $ip . ")";
+					$textoNotificar = $alerta_temperatura;
+					$textoNotificar = str_replace("%servidor%", $nome_servidor . " (" . $ip . ")", $textoNotificar);
+					$textoNotificar = str_replace("%temperatura_atual%", $temp_atual, $textoNotificar);
+					$textoNotificar = str_replace("%temperatura_limite%", $temperatura_limite, $textoNotificar);
+					
+					$msgTelegram = $textoNotificar;
+				}
+				$tdStyle = "temperatura_alta";
+				$warning = "1";
+			}
+			else {
+				$tdStyle = "temperatura_normal";
+				$warning = "0";
+			}
+			
+			$arrTemperaturas[] = array($nome_servidor, $temp_atual, $tdStyle);
+			
+			$arrMostrados[] = array ($retDetalhe, $warning, $assuntoNotificar, $textoNotificar, $msgTelegram);
 			
 			$arrY[] = (int)$temp_atual;
 			$arrX[] = $nome_servidor;
@@ -2878,8 +3202,8 @@ if ($nroRegistros > 0) {
 		}
 
 		
-		if ($cpu == "1") {
-			$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $cpu_script;
+		if (($cpu == "1") and ($somente_temperatura != "1")) {
+			$comando = 'timeout 1 sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $cpu_script;
 			// dumpVar($comando);
 			$ret = shell_exec($comando);
 			$linha = trim(preg_replace('/\s+/', ' ', $ret));
@@ -2905,7 +3229,28 @@ if ($nroRegistros > 0) {
 			// $cpu_atual = trim(pedaco (pedaco ($ret, "=", 2), "'", 1));
 			// $retServidor = msgBanner ("CPU: " . $cpu_atual . " ", $class_header, "center", "400");
 
-			$arrMostrados[] = $retDetalhe;
+			$assuntoNotificar = "";
+			$textoNotificar = "";
+			$msgTelegram = "";
+			$warning = "";
+
+			if ($cpu_load >= ((float)$cpu_limite)) {
+				if ($cpu_notificar == "1") {
+					$assuntoNotificar = "ALERTA - CPU - " . $nome_servidor . "(" . $ip . ")";
+					$textoNotificar = $alerta_cpu;
+					$textoNotificar = str_replace("%servidor%", $nome_servidor . " (" . $ip . ")", $textoNotificar);
+					$textoNotificar = str_replace("%cpu_atual%", $cpu_load, $textoNotificar);
+					$textoNotificar = str_replace("%cpu_limite%", $cpu_limite, $textoNotificar);
+
+					$msgTelegram = $textoNotificar;
+				}
+				$warning = "1";
+			}
+			else {
+				$warning = "0";
+			}
+			
+			$arrMostrados[] = array ($retDetalhe, $warning, $assuntoNotificar, $textoNotificar, $msgTelegram);
 
 			$cpu_load = ($cpu_load == "") ? "0" : $cpu_load;
 
@@ -2917,8 +3262,8 @@ if ($nroRegistros > 0) {
 			
 		}
 
-		if ($memoria == "1") {
-			$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $memoria_script;
+		if (($memoria == "1") and ($somente_temperatura != "1"))  {
+			$comando = 'timeout 1 sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $memoria_script;
 			// dumpVar($comando);
 			$ret = shell_exec($comando);
 			$linha = trim (pedaco (trim(pedaco(trim(preg_replace('/\s+/', ' ', $ret)), "Mem:", 2)), "Swap:", 1));
@@ -2928,7 +3273,8 @@ if ($nroRegistros > 0) {
 			$mem_available = pedaco ($linha, " ", 6);
 			
 			$mem_used_real = (int)$mem_total - (int)$mem_free;
-						
+			$mem_used_perc = round (100 * ((int)$mem_used_real / ((int)$mem_free + (int)$mem_used_real)), 2);
+			
 			$titulo = "";
 			$legendas = "Usado^Livre";
 			$valores = "$mem_used_real^$mem_free";
@@ -2938,7 +3284,28 @@ if ($nroRegistros > 0) {
 			$img_src = "<img src='grafico_pizza_memoria.php?titulo=$titulo&legendas=$legendas&valores=$valores'>";
 			$retDetalhe .= $img_src;
 			
-			$arrMostrados[] = $retDetalhe;
+			$assuntoNotificar = "";
+			$textoNotificar = "";
+			$msgTelegram = "";
+			$warning = "";
+			
+			if ($mem_used_perc >= ((float)$memoria_limite)) {
+				if ($memoria_notificar == "1") {
+					$assuntoNotificar = "ALERTA - Memória - " . $nome_servidor . " (" . $ip . ")";
+					$textoNotificar = $alerta_memoria;
+					$textoNotificar = str_replace("%servidor%", $nome_servidor . " (" . $ip . ")", $textoNotificar);
+					$textoNotificar = str_replace("%memoria_atual%", $mem_used_perc, $textoNotificar);
+					$textoNotificar = str_replace("%memoria_limite%", $memoria_limite, $textoNotificar);
+
+					$msgTelegram = $textoNotificar;
+				}
+				$warning = "1";
+			}
+			else {
+				$warning = "0";
+			}
+			
+			$arrMostrados[] = array ($retDetalhe, $warning, $assuntoNotificar, $textoNotificar, $msgTelegram);
 
 			$mem_used_real = ($mem_used_real == "") ? "0" : $mem_used_real;
 			$mem_free = ($mem_free == "") ? "0" : $mem_free;
@@ -2952,15 +3319,20 @@ if ($nroRegistros > 0) {
 		}
 		
 		
-		if ($espaco_disco == "1") {
+		if (($espaco_disco == "1") and ($somente_temperatura != "1"))  {
 			$arrDiscos = explode (",", $espaco_disco_script);
 			$discoAtual = "1";
 			foreach ($arrDiscos as $espaco_disco_script0) {
-				$comando = 'sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $espaco_disco_script0;
+				$comando = 'timeout 1 sshpass -p "' . $password . '" ssh -o StrictHostKeyChecking=no ' . $username . '@' . $ip . ' ' . $espaco_disco_script0;
 				// dumpVar($comando);
 				$ret = shell_exec($comando);
 				// dumpVar($ret);
-				$linha_disco = trim(preg_replace('/\s+/', ' ', pedaco ($ret, "Mounted on", 2)));
+				if (strpos($ret, "Montado") !== false)
+					$procura = "Montado em";
+				else
+					$procura = "Mounted on";
+				
+				$linha_disco = trim(preg_replace('/\s+/', ' ', pedaco ($ret, $procura, 2)));
 				$disco_size = trim (pedaco ($linha_disco, " ", 2));
 				$disco_used = trim (pedaco ($linha_disco, " ", 3));
 				$disco_free = trim (pedaco ($linha_disco, " ", 4));
@@ -2981,7 +3353,30 @@ if ($nroRegistros > 0) {
 				$img_src = "<img src='grafico_pizza_disco.php?titulo=$titulo&legendas=$legendas&valores=$valores'>";
 				$retDetalhe .= $img_src;
 				
-				$arrMostrados[] = $retDetalhe;
+				$assuntoNotificar = "";
+				$textoNotificar = "";
+				$msgTelegram = "";
+				$warning = "";
+				
+				if ($disco_perc_used >= ((int)$espaco_disco_limite)) {
+					if ($espaco_disco_notificar == "1") {
+						$assuntoNotificar = "ALERTA - Disco - " . $nome_servidor . " (" . $ip . ")";
+						$textoNotificar = $alerta_disco;
+						$textoNotificar = str_replace("%servidor%", $nome_servidor . " (" . $ip . ")", $textoNotificar);
+						$textoNotificar = str_replace("%disco_atual%", $disco_perc_used, $textoNotificar);
+						$textoNotificar = str_replace("%particao%", $disco_nome, $textoNotificar);
+						$textoNotificar = str_replace("%disco_limite%", $espaco_disco_limite, $textoNotificar);
+						
+						$msgTelegram = $textoNotificar;
+						
+					}
+					$warning = "1";
+				}
+				else {
+					$warning = "";
+				}
+			
+				$arrMostrados[] = array ($retDetalhe, $warning, $assuntoNotificar, $textoNotificar, $msgTelegram);
 				
 				$disco_used = ($disco_used == "") ? "0" : $disco_used;
 				$disco_free = ($disco_free == "") ? "0" : $disco_free;
@@ -3010,9 +3405,34 @@ if ($nroRegistros > 0) {
 				}
 				$retServidor .= "<tr>\n";
 			}
-			$retServidor .= "<td class='sel_detail_pad' valign=middle align=center width=400>\n";
-			$retServidor .= $celula;
+
+			$conteudo = $celula[0];
+			$warning = $celula[1];
+			
+			$tdStyle = ($warning == "1" ? "sel_detail_pad_warning" : "sel_detail_pad");
+			$retServidor .= "<td class='$tdStyle' valign=middle align=center width=400>\n";
+			$retServidor .= $conteudo;
 			$retServidor .= "\n</td>";
+			
+			if ($celula[2] != "") {
+				// assunto da notificação preenchido - notificar por email e Telegram
+				$sendTo = parametro("EMAIL_NOTIFICACAO_MONITORAMENTO");
+				$subject = $celula[2];
+				$body = $celula[3];
+				// dumpVar($body);
+				$msgTelegram = utf8_decode($celula[4]);
+				// $subject = str_replace("%objeto%", $rastreio, $subject) . " - " . $nomeObjeto;
+	
+				$nameFrom = parametro("NOME_NOTIFICACAO_MONITORAMENTO");
+		
+				$body = "<h3>" . $subject . "</h3><br><br>" . $body;
+	
+				$retMail = sendMail ($sendTo, GOOGLE_USER, $nameFrom, $subject, $body, true, "UTF-8");
+				// dumpVar($retMail);
+	
+				send_Telegram("\n<b>" . $subject . "</b>\n\n" . $msgTelegram, TELEGRAM_ALERTAS_BOT_TOKEN);
+				
+			}
 			
 			$i++;
 		}
@@ -3040,6 +3460,65 @@ if ($nroRegistros > 0) {
 		$retGeral .= $img_src;
 
 	}
+	
+	if ($somente_temperatura == "1") {
+		// monta saída somente com as temperaturas, ignora as outras métricas
+		$retGeral = msgBanner ($titulo, " class='sel_header_top_pad' ", "center", $tamTitulo);
+/*
+
+		// tabela horizontal
+		
+		$retTH = "";
+		$retTD = "";
+		$i = 0;
+		foreach ($arrTemperaturas as $tempServidor) {
+			if ($i == 0) {
+				// inicializa tabela
+				$retGeral .= "<table width=800 class='sel_header_top_pad'>\n";
+			}
+
+			$retTH .= "<th class='sel_header'>\n";
+			$retTH .= $tempServidor[0] . "\n";
+			$retTH .= "</th>\n";
+			
+			$retTD .= "<td align=center class='" . $tempServidor[2] . "'>\n";
+			$retTD .= $tempServidor[1] . "ºC\n";
+			$retTD .= "</td>\n";
+			
+			$i++;
+		}
+		$retGeral .= $retTH;
+		$retGeral .= "<tr>\n";
+		$retGeral .= $retTD;
+		$retGeral .= "\n</tr>\n</table>\n";
+*/
+
+		// tabela vertical
+
+		$retTab2 = "";
+		$i = 0;
+		foreach ($arrTemperaturas as $tempServidor) {
+			if ($i == 0) {
+				// inicializa tabela
+				$retTab2 .= "<table width=400 class='sel_header_top_pad'>\n";
+			}
+
+			$retTab2 .= "<tr>\n<td width=250 align=center class='cabec_tabela1'>\n";
+			$retTab2 .= $tempServidor[0] . "\n";
+			$retTab2 .= "</td>\n";
+			
+			$retTab2 .= "<td align=center class='" . $tempServidor[2] . "'>\n";
+			$retTab2 .= $tempServidor[1] . "ºC\n";
+			$retTab2 .= "</td>\n</tr>\n";
+			
+			$i++;
+		}
+		
+		$retTab2 .= "</table>\n";
+		$retGeral .= $retTab2;
+				
+		
+	}
 
 }
 else {
@@ -3049,6 +3528,95 @@ else {
 $retGeral = utf8_encode($retGeral);
 
 return $retGeral;
+	
+}
+
+// ---------------------------------------------------------------------------------------
+
+function sendMail ($to, $from, $from_name, $subject, $body, $isHTML = false, $encoding = "") { 
+
+//	global $error;
+$mail = new \PHPMailer\PHPMailer\PHPMailer();
+if ($encoding != "")
+	$mail->CharSet = $encoding;
+
+$mail->IsSMTP();		// Ativar SMTP
+$mail->IsHTML($isHTML);
+$mail->SMTPDebug = 0;		// Debugar: 1 = erros e mensagens, 2 = mensagens apenas
+$mail->SMTPAuth = true;		// Autenticação ativada
+$mail->SMTPSecure = 'tls';	// SSL REQUERIDO pelo GMail
+$mail->Host = "smtp.gmail.com";	// SMTP utilizado
+$mail->Port = 587;  		// A porta 587 deverá estar aberta em seu servidor
+$mail->Username = GOOGLE_USER;
+$mail->Password = GOOGLE_PASSWORD;
+$mail->SetFrom($from, $from_name);
+$mail->Subject = $subject;
+$mail->Body = $body;
+$mail->AddAddress($to);
+if(!$mail->Send()) {
+	$output1	= 'Mail error: '.$mail->ErrorInfo; 
+	$output0 = false;
+} else {
+	$output1 = 'Mensagem enviada!';
+	$output0 = true;
+}
+
+$ret = array ($output0, $output1);
+return $ret;
+
+}
+
+
+// ---------------------------------------------------------------------------------------
+
+function send_Telegram ($msg, $botToken = TELEGRAM_ALERTAS_BOT_TOKEN) {
+
+$token = $botToken;
+$chatID = TELEGRAM_CHAT_ID;
+
+// dumpVar($token);
+// dumpVar($chatID);
+
+$url  = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=" . $chatID;
+$url .= "&parse_mode=HTML";
+$url .= "&text=" . urlencode(utf8_encode($msg));
+
+// dumpVar($url);
+/*
+$ch = curl_init();
+$optArray = array(
+					CURLOPT_URL => $url,
+					CURLOPT_RETURNTRANSFER => true
+			);
+curl_setopt_array($ch, $optArray);
+$result = curl_exec($ch);
+// dumpVar($result);
+curl_close($ch);
+*/
+
+file_get_contents($url);	
+
+
+/*
+$data = [
+    'text' => $msg,
+    'chat_id' => $chatID
+];
+
+file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );	
+*/
+	
+}
+
+// ---------------------------------------------------------------------------------------
+
+function parametro($nome) {
+	
+	
+$sqlParametro = "SELECT valor from parametro where nome = '$nome'";
+$ret = simpleSelectPDO($sqlParametro);
+
+return $ret[0];
 	
 }
 

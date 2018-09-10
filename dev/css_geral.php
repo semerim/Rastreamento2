@@ -8,10 +8,10 @@ $table1 = isset($_SESSION["table1"]) ? $_SESSION["table1"] : "#D0F6FE";
 $table2 = isset($_SESSION["table2"]) ? $_SESSION["table2"] : "#C6F3FE";
 $table3 = isset($_SESSION["table3"]) ? $_SESSION["table3"] : "#F0FCFF";
 $botao_form = isset($_SESSION["botao_form"]) ? $_SESSION["botao_form"] : "#C4C4C4";
-
+$rastreamento_cabec = isset($_SESSION["rastreamento_cabec"]) ? $_SESSION["rastreamento_cabec"] : "#C4C4C4";
+$rastreamento_botao = isset($_SESSION["rastreamento_botao"]) ? $_SESSION["rastreamento_botao"] : "#C4C4C4";
 
 ?>
-
 
 dummy  {bla1: 11;
        }
@@ -195,6 +195,19 @@ td.sel_detail_pad
 		padding: 5px;
 	}
 
+td.sel_detail_pad_warning
+    {
+		font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        background-color: red;
+		color: white;
+		border-style: solid;
+		border: solid #cccccc 0.06em;
+        font-style: normal;
+        font-size: 11px;
+		padding: 5px;
+	}
+
 td.bottom
     {
 		font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
@@ -231,6 +244,34 @@ td.tabelaFx2
         font-style: normal;
 	}
 
+td.temperatura_normal
+    {
+		color: black;
+        background-color: <?php echo $table3 ?>;
+        font-weight: bold;
+        font-size: 15px;
+		font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+        text-decoration: bold;
+		border-style: solid;
+		border: solid #cccccc 0.03em;
+        font-style: normal;
+		padding: 8px 8px;
+	}
+
+td.temperatura_alta
+    {
+		color: white;
+        background-color: red;
+        font-weight: bold;
+        font-size: 15px;
+		font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+        text-decoration: bold;
+		border-style: solid;
+		border: solid #cccccc 0.03em;
+        font-style: normal;
+		padding: 8px 8px;
+	}
+	
 textarea.sql 
 	{
 		width: 100%;
@@ -503,6 +544,74 @@ a.link1:hover
         font-weight: bold;
 	}
 
+
+
+
+/*********************************************************************************************************/
+/** Rastreio de objetos **/
+/*********************************************************************************************************/
+	
+table.rastreio {
+    border-collapse: collapse;
+}
+
+th.cabec_rastreio {
+    background-color: <?php echo $rastreamento_cabec ?>;
+    text-align: left;
+    padding: 3px;
+	font-size : 100%;
+	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+	font-weight: bold;
+    color: white;
+}
+
+td.dataHoraCidade {
+    text-align: left;
+    padding: 3px;
+	font-size : 70%;
+	font-weight: bold;
+	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+}
+
+td.evento {
+    text-align: left;
+    padding: 3px;
+	vertical-align: middle;
+	font-size : 70%;
+	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
+}
+
+tr:nth-child(even).rastreio {
+	background-color: #E5E5E5
+}
+
+
+a.botaoRastreio {
+   font-family: tahoma, verdana, arial, sans-serif;
+   font-size: 8pt;
+   font-weight: bold;
+   padding: 1px;
+   background-color: <?php echo $rastreamento_botao ?>;
+   color: #666666;
+   text-decoration: none;
+   cursor: pointer; /* hand-shaped cursor */
+   cursor: hand; /* for IE 5.x */
+   border-radius: 6px;
+   margin: 2px 2px;
+}
+a.botaoRastreio:link,
+a.botaoRastreio:visited {
+   border-top: 1px solid #cccccc;
+   border-bottom: 2px solid #666666;
+   border-left: 1px solid #cccccc;
+   border-right: 2px solid #666666;
+}
+a.botaoRastreio:hover {
+   border-top: 2px solid #666666;
+   border-bottom: 1px solid #cccccc;
+   border-left: 2px solid #666666;
+   border-right: 1px solid #cccccc;
+}
 
 
 /*********************************************************************************************************/

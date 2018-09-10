@@ -1,9 +1,9 @@
 <html>
 <head>
 
-<?php require_once('globais.php'); ?>
-<?php require_once (RAIZ_INC . 'funcoesJS.php'); ?>
-<?php require_once (RAIZ_INC . 'funcoesJS_validation.php'); ?>
+<?php require_once('inc_rastreamento.php'); ?>
+<?php require_once ('funcoesJS.php'); ?>
+<?php require_once ('funcoesJS_validation.php'); ?>
 <?php // require_once (RAIZ_INC . 'checkSession.php'); ?>
 
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">

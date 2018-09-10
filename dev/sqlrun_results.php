@@ -12,9 +12,9 @@ header('Content-Type: text/html; charset=latin1');
 
 require_once('globais.php');
 
-require_once(RAIZ_INC . 'conexao.php');
-require_once(RAIZ_INC . 'inc_rastreamento.php');
-require_once(RAIZ_INC . 'funcoesJS.php');
+require_once('conexao.php');
+require_once('inc_rastreamento.php');
+require_once('funcoesJS.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -191,7 +191,7 @@ else {
 
 // $tabelaTotal = "<table width=100%><tr><th align=center " . $class_header . "><b>Registros localizados: $nroRegistros</b></th></tr></table>";
 
-$tabelaTotal = msgTabela("Registros localizados: $nroRegistros", $class_header);
+$tabelaTotal = msgTabela("Registros localizados: $nroRegistros", "center", $class_header);
 
 $bodyStarts = '<body class="rosto2" onload=' . $aspas . 'processa_onLoad(' . $apostrofe . $tabelaTotal . $apostrofe . ')">';
 

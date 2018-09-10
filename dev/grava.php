@@ -3,8 +3,8 @@
 
    require_once('globais.php');
 
-   require_once(RAIZ_INC . 'conexao.php');
-   require_once(RAIZ_INC . 'inc_rastreamento.php');
+   require_once('conexao.php');
+   require_once('inc_rastreamento.php');
 
    // ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -35,7 +35,7 @@
          $key = substr ($key, 6);
          $array_campos [$i]  = $key;
          $tipo = strtoupper(getColumnType ($qs_tabela, $key));
-		 // $val = utf8_decode($val);
+		 $val = utf8_decode($val);
 		 
          $gen_tipo = strtoupper(getGenericType ($tipo));
          // echo "Campo: " . $key . " (TIPO: " . $tipo . " - " . $gen_tipo . ")<br>";

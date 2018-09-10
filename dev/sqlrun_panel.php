@@ -6,8 +6,8 @@ session_start();
 
 require_once('globais.php');
 
-require_once(RAIZ_INC . 'conexao.php');
-require_once(RAIZ_INC . 'inc_rastreamento.php');
+require_once('conexao.php');
+require_once('inc_rastreamento.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 

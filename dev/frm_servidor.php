@@ -6,8 +6,8 @@
 
    require_once('globais.php');
 
-   require_once(RAIZ_INC . 'conexao.php');
-   require_once(RAIZ_INC . 'inc_rastreamento.php');
+   require_once('conexao.php');
+   require_once('inc_rastreamento.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -107,6 +107,30 @@ document.dhtmlEditors_home='dhtmleditor/';
    
    $campos[16][0] = "LOG";
    $campos[16][1] = "log";
+   
+   $campos[17][0] = "TEMPERATURA_NOTIFICAR";
+   $campos[17][1] = "temperatura_notificar";
+   
+   $campos[18][0] = "TEMPERATURA_LIMITE";
+   $campos[18][1] = "temperatura_limite";
+   
+   $campos[19][0] = "CPU_NOTIFICAR";
+   $campos[19][1] = "cpu_notificar";
+   
+   $campos[20][0] = "CPU_LIMITE";
+   $campos[20][1] = "cpu_limite";
+
+   $campos[21][0] = "MEMORIA_NOTIFICAR";
+   $campos[21][1] = "memoria_notificar";
+   
+   $campos[22][0] = "MEMORIA_LIMITE";
+   $campos[22][1] = "memoria_limite";
+   
+   $campos[23][0] = "ESPACO_DISCO_NOTIFICAR";
+   $campos[23][1] = "espaco_disco_notificar";
+   
+   $campos[24][0] = "ESPACO_DISCO_LIMITE";
+   $campos[24][1] = "espaco_disco_limite";
 
    $tabelas = "SERVIDOR";
 
@@ -133,9 +157,20 @@ document.dhtmlEditors_home='dhtmleditor/';
 	define ("CHECK_LOG", montaCheck ("grava_LOG", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : LOG, $edicao, "", "1"));
 
 	define ("CHECK_TEMPERATURA", montaCheck ("grava_TEMPERATURA", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : TEMPERATURA, $edicao, "", "1"));
+	define ("CHECK_TEMPERATURA_NOTIFICAR", montaCheck ("grava_TEMPERATURA_NOTIFICAR", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : TEMPERATURA_NOTIFICAR, $edicao, "", "1"));
+	define ("EDIT_TEMPERATURA_LIMITE", montaEdit ("grava_TEMPERATURA_LIMITE", TEMPERATURA_LIMITE, 100, "", $edicao, $novo, ""));
+
 	define ("CHECK_MEMORIA", montaCheck ("grava_MEMORIA", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : MEMORIA, $edicao, "", "1"));
+	define ("CHECK_MEMORIA_NOTIFICAR", montaCheck ("grava_MEMORIA_NOTIFICAR", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : MEMORIA_NOTIFICAR, $edicao, "", "1"));
+	define ("EDIT_MEMORIA_LIMITE", montaEdit ("grava_MEMORIA_LIMITE", MEMORIA_LIMITE, 100, "", $edicao, $novo, ""));
+
 	define ("CHECK_ESPACO_DISCO", montaCheck ("grava_ESPACO_DISCO", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : ESPACO_DISCO, $edicao, "", "1"));
+	define ("CHECK_ESPACO_DISCO_NOTIFICAR", montaCheck ("grava_ESPACO_DISCO_NOTIFICAR", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : ESPACO_DISCO_NOTIFICAR, $edicao, "", "1"));
+	define ("EDIT_ESPACO_DISCO_LIMITE", montaEdit ("grava_ESPACO_DISCO_LIMITE", ESPACO_DISCO_LIMITE, 100, "", $edicao, $novo, ""));
+
 	define ("CHECK_CPU", montaCheck ("grava_CPU", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : CPU, $edicao, "", "1"));
+	define ("CHECK_CPU_NOTIFICAR", montaCheck ("grava_CPU_NOTIFICAR", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : CPU_NOTIFICAR, $edicao, "", "1"));
+	define ("EDIT_CPU_LIMITE", montaEdit ("grava_CPU_LIMITE", CPU_LIMITE, 100, "", $edicao, $novo, ""));
    
    // botões de ação
 	if ($novo == "1") {
@@ -255,9 +290,21 @@ document.getElementById('layerMonitorar').src = "monitorar.php?cod_servidor=" + 
     </td>
   </tr>
   <tr>
+    <td class="tabela1Fixo"<div align="right">Limite Temperatura(ºC):</div></td>
+    <td align="left" valign="middle" class="tabela2Fixo">
+    	 <?php echo CHECK_TEMPERATURA_NOTIFICAR ?> <?php echo EDIT_TEMPERATURA_LIMITE ?>
+    </td>
+  </tr>
+  <tr>
     <td class="tabela1Fixo"<div align="right">Monitorar Espaço em Disco:</div></td>
     <td align="left" valign="middle" class="tabela2Fixo">
     	 <?php echo CHECK_ESPACO_DISCO ?> <?php echo EDIT_ESPACO_DISCO_SCRIPT ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="tabela1Fixo"<div align="right">Limite Espaço Utilizado em Disco (%):</div></td>
+    <td align="left" valign="middle" class="tabela2Fixo">
+    	 <?php echo CHECK_ESPACO_DISCO_NOTIFICAR ?> <?php echo EDIT_ESPACO_DISCO_LIMITE ?>
     </td>
   </tr>
   <tr>
@@ -267,9 +314,21 @@ document.getElementById('layerMonitorar').src = "monitorar.php?cod_servidor=" + 
     </td>
   </tr>
   <tr>
+    <td class="tabela1Fixo"<div align="right">Limite Memória Utilizada (%):</div></td>
+    <td align="left" valign="middle" class="tabela2Fixo">
+    	 <?php echo CHECK_MEMORIA_NOTIFICAR ?> <?php echo EDIT_MEMORIA_LIMITE ?>
+    </td>
+  </tr>
+  <tr>
     <td class="tabela1Fixo"<div align="right">Monitorar CPU:</div></td>
     <td align="left" valign="middle" class="tabela2Fixo">
     	 <?php echo CHECK_CPU ?> <?php echo EDIT_CPU_SCRIPT ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="tabela1Fixo"<div align="right">Limite CPU Load (%):</div></td>
+    <td align="left" valign="middle" class="tabela2Fixo">
+    	 <?php echo CHECK_CPU_NOTIFICAR ?> <?php echo EDIT_CPU_LIMITE ?>
     </td>
   </tr>
 </table>

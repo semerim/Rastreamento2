@@ -17,8 +17,8 @@
 
 session_start();
 
-require_once(RAIZ_INC . 'conexao.php');
-require_once(RAIZ_INC . 'inc_rastreamento.php');
+require_once('conexao.php');
+require_once('inc_rastreamento.php');
 
 $cod_esquema_cores = isset($_REQUEST["cod_esquema_cores"]) ? $_REQUEST["cod_esquema_cores"] : "";
 

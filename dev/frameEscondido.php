@@ -1,6 +1,6 @@
 <?php 
 header('Content-Type: text/html; charset=ISO-8859-1',true); 
-require_once('globais.php');
+require_once('inc_rastreamento.php');
 ?>
 
 <html>

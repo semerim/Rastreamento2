@@ -6,8 +6,8 @@
 
    require_once('globais.php');
 
-   require_once(RAIZ_INC . 'conexao.php');
-   require_once(RAIZ_INC . 'inc_rastreamento.php');
+   require_once('conexao.php');
+   require_once('inc_rastreamento.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -117,6 +117,9 @@ document.dhtmlEditors_home='dhtmleditor/';
 
    $campos[19][0] = "DT_ULT_ATUALIZACAO";
    $campos[19][1] = "date_format (dt_ult_atualizacao, '%d/%m/%Y')";
+
+   $campos[20][0] = "NOTIFICAR";
+   $campos[20][1] = "notificar";
    
    $tabelas = "OBJETO";
 
@@ -167,6 +170,8 @@ document.dhtmlEditors_home='dhtmleditor/';
 	// define ("SEL_STATUS", montaSelect ($arrStatus, "grava_STATUS", "RADIO", STATUS_0, $edicao, "1"));
 	define ("SEL_STATUS", montaSelect ($queryStatus, "grava_STATUS", "RADIO", STATUS_0, $edicao, $novo, "1"));
 	define ("EDIT_ALTURA_IFRAME", montaEdit ("grava_ALTURA_IFRAME", ALTURA_IFRAME_0, 10, "", $edicao, $novo, ALTURA_IFRAME_0));
+
+	define ("CHECK_NOTIFICAR", montaCheck ("grava_NOTIFICAR", "1,0", "SIM,NÃO", ($novo == "1") ? "0" : NOTIFICAR, $edicao, "", "1"));
 
    
    // botões de ação
@@ -363,6 +368,12 @@ document.getElementById('layerRastreio').src = "rastreio.php?cod_rastreio=" + ra
     </td>
   </tr>
   <tr>
+    <td class="tabela1Fixo"<div align="right">Notificar por email em troca de status:</div></td>
+    <td align="left" valign="middle" class="tabela2Fixo">
+    	 <?php echo CHECK_NOTIFICAR ?>
+    </td>
+  </tr>
+    <tr>
     <td class="tabela1Fixo"><div align="right">Altura do iFrame no Painel:</div></td>
     <td align="left" valign="middle" class="tabela2Fixo">
     	 <?php echo EDIT_ALTURA_IFRAME ?>

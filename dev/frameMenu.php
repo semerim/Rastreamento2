@@ -5,8 +5,8 @@
 
 	require_once('globais.php');
 
-	require_once(RAIZ_INC . 'conexao.php');
-	require_once(RAIZ_INC . 'inc_rastreamento.php');
+	require_once('conexao.php');
+	require_once('inc_rastreamento.php');
 
 	// ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -47,7 +47,13 @@ require_once 'lib/treemenu.inc.php';
 
 $treemid = new TreeMenu();
 $menustring =
-".|Consultar||Consultas do sistema|||1
+".|Incluir||Incluir|||1
+..|Objeto|frm_objeto.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Objeto||mainFrame
+..|Query SQL|frm_sql_query.php?campoChave=SEQ&novo=1|Clique aqui para incluir uma nova query||mainFrame
+..|Usuário|frm_usuario.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Usuário||mainFrame
+..|Servidor|frm_servidor.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Servidor||mainFrame
+..|Esquema de Cores|frm_esquema_cores.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Esquema de Cores||mainFrame
+.|Consultar||Consultas do sistema|||1
 ..|Objetos||Objetos|||
 ...|Em Processamento|visao_fs.php?consulta=objetosEmProcessamento|Objetos em processamento||mainFrame
 ...|Entregues|visao_fs.php?consulta=objetosEntregues|Objetos entregues|teste|mainFrame
@@ -55,20 +61,17 @@ $menustring =
 ...|Em Rascunho|visao_fs.php?consulta=objetosEmRascunho|Objetos em rascunho||mainFrame
 ...|Todos|visao_fs.php?consulta=objetos|Objetos||mainFrame
 ...|Gera arquivos XML/JS|pacotesdb.php|Gera arquivo de pacotes JavaScript||mainFrame
+...|Verifica Status de Objetos|verificaStatusObjetos.php|Verifica status de objetos e notifica se necessário||mainFrame
 ..|Status||Status|||
 ...|Status - Todos|visao_fs.php?consulta=status|Status||mainFrame
 ..|SQL Query||SQL Query|||
 ...|SQL Query - Todos|visao_fs.php?consulta=sqlqueries|SQL Query||mainFrame
 .|---
-.|Incluir||Incluir|||1
-..|Objeto|frm_objeto.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Objeto||mainFrame
-..|Query SQL|frm_sql_query.php?campoChave=SEQ&novo=1|Clique aqui para incluir uma nova query||mainFrame
-..|Usuário|frm_usuario.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Usuário||mainFrame
-..|Servidor|frm_servidor.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Servidor||mainFrame
-..|Esquema de Cores|frm_esquema_cores.php?campoChave=SEQ&novo=1|Clique aqui para incluir um Esquema de Cores||mainFrame
 .|Administração||Administração|||1
+..|Parâmetros|visao_fs.php?consulta=parametros|Parâmetros do Sistema||mainFrame
 ..|Servidores||Servidores|||
 ...|Por Nome|visao_fs.php?consulta=servidoresPorNome|Servidores por Nome||mainFrame
+...|Coleta Estatísticas|coletaEstatisticasServidores.php|Coleta estatísticas dos servidores ativos||mainFrame
 ..|Usuários||Usuários|||
 ...|Por Username|visao_fs.php?consulta=usuariosPorUsername|Usuários por Username||mainFrame
 ...|Por Nome|visao_fs.php?consulta=usuariosPorNome|Usuários por Nome||mainFrame
@@ -83,6 +86,7 @@ $menustring =
 .|Grava estatísticas|coletaEstatisticasServidores.php|Clique aqui para coletar as estatísticas dos servidores||mainFrame
 .|Gráficos de Servidores|frm_log_servidor_historico.php|Clique aqui para ver os gráficos de histórico de logs dos servidores||mainFrame
 .|Monitorar Servidores|monitor.php|Clique aqui para visualizar a monitorização dos servidores||mainFrame
+.|Temperaturas de Servidores|statusTemperaturas.php|Clique aqui para visualizar as temperaturas dos servidores||mainFrame
 ";
 
 $treemid->setMenuStructureString($menustring);

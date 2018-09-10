@@ -12,41 +12,7 @@ require_once('inc_rastreamento.php');
 
 <html>
 <head>
-<style>
-table {
-    border-collapse: collapse;
-}
-
-th, td {
-    text-align: left;
-    padding: 3px;
-	font-size : 70%;
-	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
-}
-
-td.dataHoraCidade {
-    text-align: left;
-    padding: 3px;
-	font-size : 70%;
-	font-weight: bold;
-	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
-}
-
-td.evento {
-    text-align: left;
-    padding: 3px;
-	font-size : 70%;
-	font-family : "Myriad Web",Verdana,Helvetica,Arial,sans-serif;
-}
-
-tr:nth-child(even){background-color: #E5E5E5}
-
-th {
-    background-color: <?php echo RASTREIO_CORCABEC ?>;
-	font-size : 100%;
-	font-weight: bold;
-    color: white;
-}</style>
+<link href="css_geral.php" rel='stylesheet' type='text/css'>
 </head>
 <?php
 
@@ -55,6 +21,8 @@ th {
 	if ($qs_cod_rastreio == "")
 		exit ("Código de rastreio inválido!");
 		
+/*
+
 	$arrEventos = rastreioObjParse($qs_cod_rastreio);
 	// print_r($arrEventos);
 	
@@ -64,16 +32,16 @@ th {
 									'',
 									''));
 
-//		exit;
 	}
-	
+*/	
 ?>
 
 
 <body>
 
 <?php
-	
+
+/*	
 	$nroEvento = 0;
 	foreach ($arrEventos as $evento) {
 		if ($nroEvento == 0) {
@@ -108,6 +76,9 @@ th {
 
 	exit;
 
+*/
+
+echo geraHTMLPacote ($qs_cod_rastreio);
 
 ?>
 

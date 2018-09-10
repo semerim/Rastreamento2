@@ -15,7 +15,7 @@
 		</td>
 		<td width="50%" class="visao_detail" valign="middle">
 			<center>
-			<span id="results" align="left">teste</span>
+			<span id="results" align="left">&nbsp;&nbsp;</span>
 			</center>
 		</td>
 		<td width="25%" class="visao_detail" valign="middle"><div align="right">&nbsp;</div>

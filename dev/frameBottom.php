@@ -7,8 +7,8 @@ require_once('inc_rastreamento.php');
 ?>
 <html>
 <head>
-<?php require_once (RAIZ_INC . 'funcoesJS.php'); ?>
-<?php require_once (RAIZ_INC . 'funcoesJS_validation.php'); ?>
+<?php require_once ('funcoesJS.php'); ?>
+<?php require_once ('funcoesJS_validation.php'); ?>
 
 
 <script>
@@ -52,6 +52,8 @@ function autoRefresh() {
 			<A target=mainFrame HREF='sqlrun.php'>SQL RUN</A>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<A target=mainFrame HREF='rastreamentodb.php'>OBJETOS</A>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<A target=mainFrame HREF='statusTemperaturas.php'>TEMPERATURAS</A>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<A target=mainFrame HREF='monitor.php'>MONITOR</A>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

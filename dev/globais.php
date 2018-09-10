@@ -1,5 +1,9 @@
 <?php
 
+// require_once('conexao.php');
+// require_once('inc_rastreamento.php');
+
+/*
 define("LOGIN_TIMEOUT", 600);	// tempo em minutos para forçar o login independente de atividade
 define("ACTIVITY_TIMEOUT", 60);	// tempo em minutos para forçar o login baseado na última atividade
 define("PAG_USR"  , "home_fs.php");
@@ -33,6 +37,14 @@ define ("HOMEDIR", "/rastreamento/" . AMBIENTE . "/");
 
 define("RASTREIO_CORCABEC", isset($_SESSION["rastreamento_cabec"]) ? $_SESSION["rastreamento_cabec"] : "#ADD8E6");
 define("RASTREIO_CORBOTAO", isset($_SESSION["rastreamento_botao"]) ? $_SESSION["rastreamento_botao"] : "#ffffcc");
+
+*/
+
+
+// define ("GOOGLE_USER", "semerim02pg@gmail.com");
+// define ("GOOGLE_PASSWORD", "killer2kk");
+// define ("GOOGLE_USER", parametro("GOOGLE_USER"));
+// define ("GOOGLE_PASSWORD", parametro("GOOGLE_PASSWORD"));
 
 
 ?>

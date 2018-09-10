@@ -6,8 +6,8 @@ session_start();
 
 require_once('globais.php');
 
-require_once(RAIZ_INC . 'conexao.php');
-require_once(RAIZ_INC . 'inc_rastreamento.php');
+require_once('conexao.php');
+require_once('inc_rastreamento.php');
 
 // ---------- VERIFICA AUTENTICAÇÃO ----------
 
@@ -49,7 +49,7 @@ $arrStats = array (	array ("0", "1 hora"),
 					array ("13", "360 dias")
 					);
 						
-define ("SEL_STATS", montaSelect ($arrStats, "grava_STATS", "COMBO", "0", $edicao, $novo, " onchange='mostraGrafico()'"));
+define ("SEL_STATS", montaSelect ($arrStats, "grava_STATS", "COMBO", "5", $edicao, $novo, " onchange='mostraGrafico()'"));
 
 $arrMetricas = array (	array ("0", "Temperatura"),
 					array ("1", "CPU Load"),
